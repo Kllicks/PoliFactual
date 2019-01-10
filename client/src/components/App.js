@@ -6,7 +6,6 @@ import Login from "./Login";
 import Register from "./Register";
 
 import Home from "./HomeComponent";
-import Signup from "./Signup";
 import Locals from './LocalComponent';
 import States from './StateComponent';
 import Nationals from './NationalComponent';
@@ -21,11 +20,11 @@ import { MDBBtn } from "mdbreact";
 
 
 import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch,
-  Redirect
+	BrowserRouter as Router,
+	Route,
+	Link,
+	Switch,
+	Redirect
 } from "react-router-dom";
 
 
@@ -149,12 +148,12 @@ class App extends Component {
             </>
           </Router>
 
-        {/* Footer */}
-        <FooterPage />
+				{/* Footer */}
+				<FooterPage />
 
-      </div>
-    );
-  }
+			</div>
+		);
+	}
 }
 
 
