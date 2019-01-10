@@ -1,12 +1,12 @@
 {
-  "name": "photo-widget",
+  "name": "polifactual",
   "version": "1.0.0",
   "description": "Project still in process.",
   "main": "index.js",
   "scripts": {
     "debug": "node --inspect-brk index.js",
     "dev": "nodemon index.js",
-    "reset-db": "dropdb photo-widget; createdb photo-widget; psql -f schema.sql photo-widget; psql -f seed.sql photo-widget; psql photo-widget < node_modules/connect-pg-simple/table.sql",
+    "reset-db": "dropdb polifactual; createdb polifactual; psql -f schema.sql polifactual; psql -f seed.sql polifactual; psql polifactual < node_modules/connect-pg-simple/table.sql",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

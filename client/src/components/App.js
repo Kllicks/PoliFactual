@@ -14,7 +14,10 @@ import Team from './Team';
 import Trello from './Trello';
 import Github from './Github';
 
+import axios from 'axios';
+
 import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, FormInline, Dropdown, DropdownToggle, DropdownMenu,  DropdownItem } from "mdbreact";
+import { MDBBtn } from "mdbreact";
 
 import {
   BrowserRouter as Router,
@@ -27,10 +30,16 @@ import {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      // isLoggedIn: false
+    };
   }
 
   // toggleCollapse = this.setState({ isOpen: !this.state.isOpen });
+
+  // componentDidMount() {
+  //   setInterval(this.checkLoggedIn, 3005);
+  // }
 
   render() {
     return (
@@ -95,6 +104,8 @@ class App extends Component {
                   </FormInline>
                 </NavItem>
               </NavbarNav>
+                {/* {this.showLogoutButton()} */}
+                {/* <MDBBtn rounded color="danger">Logout</MDBBtn> */}
               </Collapse>
               </Navbar>
 
@@ -119,5 +130,61 @@ class App extends Component {
     );
   }
 }
+
+// showLogoutButton = () => {
+//   let shouldShowLogout = false;
+  // if (this.props.location.pathname === "/Login") {
+  //   shouldShowLogout = false;
+  // } else if (this.props.location.pathname === "/Register") {
+  //   shouldShowLogout = false;
+  // } else if (this.props.location.pathname === "/") {
+  //   shouldShowLogout = false;
+  // } else if (this.state.isLoggedIn) {
+  //   shouldShowLogout = true;
+  // } else {
+  //   shouldShowLogout = false;
+  // }
+
+  //  if (shouldShowLogout) {
+  //   return (
+  //     <li>
+  //       <a href="#" onClick={this.logOut}>
+  //         Logout
+  //       </a>
+  //     </li>
+  //   );
+  // } else {
+  //   return null;
+  // }
+// };
+
+// checkLoggedIn = () => {
+//   axios.get("/api/verify").then(res => {
+//     // console.log(res);
+//     this.setState(
+//       {
+//         isLoggedIn: res.data !== "" // If it's not empty, then it's their user id, which means, they're logged in
+//       },
+//       () => {
+//         if (this.props.location.pathname === "/signup") {
+//           console.log("you are at signup you are ok");
+//         } else if (this.props.location.pathname === "/about") {
+//           console.log("you are at about you are ok");
+//         } else if (this.state.isLoggedIn) {
+//           console.log("you are at logged in you are ok");
+//         } else {
+//           console.log("go home");
+//           this.props.history.push("/");
+//         }
+//       }
+//     );
+//   });
+// };
+
+// logOut = () => {
+//   axios.post("/api/logout").then(res => {
+//     this.setState({ isLoggedIn: false });
+//   });
+// };
 
 export default App;
