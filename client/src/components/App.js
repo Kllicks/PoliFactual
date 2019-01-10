@@ -42,6 +42,10 @@ class App extends Component {
     });
   }
 
+  doLoggedIn = () => {
+    this.setState({ isLoggedIn: true });
+  }
+
   componentDidMount() {
     axios.get("/api/verify"). then(res => {
       if (res.data.user){
@@ -51,7 +55,6 @@ class App extends Component {
           sessionStorage.setItem('currentstate', user.currentstate);
           sessionStorage.setItem('zipcode', user.zipcode);
           console.log("logged in");
-          this.props.history.push("/")
         });
       } else {
       }
@@ -123,8 +126,9 @@ class App extends Component {
                       </div>
                   </FormInline>
                 </NavItem>
-
-                <button onClick={this.clickLogout}>Logout</button>
+                {
+                  this.state.isLoggedIn ? <button onClick={this.clickLogout}>Logout</button> : <button onClick={this.clickLogin}>Login</button>
+                }
 
               </NavbarNav>
              
@@ -135,8 +139,10 @@ class App extends Component {
 
             {/* ROUTES */}
               <Route exact path="/" component={Home} />
-              <Route exact path="/Signup" component={Signup} />
-              <Route exact path="/Login" component={Login} />
+              {/* <Route exact path="/Signup" component={Signup} /> */}
+              <Route exact path="/Login" render={(props) => {
+                  return (<Login doLoggedIn={this.doLoggedIn} {...props} />)
+              }} />
               <Route path="/Register" component={Register} />
               <Route path= "/Github" component={Github}/>
               <Route path= "/Trello" component={Trello}/>

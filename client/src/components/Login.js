@@ -43,13 +43,11 @@ class Login extends Component {
 			.post("/api/login", this.state)
 			.then(response => {
 				// Need a response including the address from userObj
-				if (response.data.status !== "Good") {
-					alert("Try Again");
-				} else {
+				if (response.data.user) {
 					console.log(response.data)
 					const user = response.data.user;
 					console.log(user);
-					
+					this.props.doLoggedIn();
 					// Save data to sessionStorage
 					// sessionStorage.setItem('key', 'value');
 					sessionStorage.setItem('streetaddress', user.streetaddress);
@@ -65,6 +63,7 @@ class Login extends Component {
 					console.log(zipcode);
 
 					this.props.history.push("/local")
+				} else {
 				}
 				
 			})
