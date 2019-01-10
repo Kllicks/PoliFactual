@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import "../styles/Login.css"
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
+import "../styles/Login.css";
+
 
 class Login extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
+			redirectToPreviousRoute: false,
 			id: '',
 			name: '',
 			username: '',
@@ -72,6 +74,12 @@ class Login extends Component {
 	}
 
 	render() {
+		const { from } = this.props.location.state || { from: { pathname: "/" } };
+    const { redirectToPreviousRoute } = this.state;
+
+    if (redirectToPreviousRoute) {
+      return <Redirect to={from} />;
+    }
 	return (
 		<div class="container-login">
 			<div class="title">
@@ -139,13 +147,11 @@ class Login extends Component {
 			</div>
 			
 		</div>
+
+
 	)
-
 }
-
-
 };
 
-		
 
 export default Login;
