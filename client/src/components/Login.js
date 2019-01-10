@@ -63,9 +63,7 @@ class Login extends Component {
 					console.log(zipcode);
 
 					this.props.history.push("/local")
-				} else {
-				}
-				
+				}	
 			})
 			.catch(err => {
 				console.log(err);
