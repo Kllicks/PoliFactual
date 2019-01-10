@@ -18,17 +18,6 @@ class Login extends Component {
 		};
 	}
 
-	// validateForm() {
-	// return this.state.email.length > 0 && this.state.password.length > 0;
-	// }
-
-	// handleChange = event => {
-	// this.setState({
-	// 	[event.target.id]: event.target.value,
-	// 	// id: event.target.id
-	// });
-	// }
-
 	_handleUsername = event => {
 		const value = event.target.value;
 
