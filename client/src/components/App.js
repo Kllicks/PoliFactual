@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import "../styles/App.css";
 import FooterPage from './Footer';
 
-
-// import Login from "./Login";
-// import Register from "./Register";
+import Login from "./Login";
+import Register from "./Register";
 
 import Home from "./HomeComponent";
 import Signup from "./Signup";
@@ -53,6 +52,12 @@ class App extends Component {
               <NavLink to="/">Home</NavLink>
               </NavItem>
               <NavItem active>
+              <NavLink to="/Register">Register</NavLink>
+              </NavItem>
+              <NavItem active>
+              <NavLink to="/Login">Login</NavLink>
+              </NavItem>
+              <NavItem active>
               <NavLink to="/Github">Github</NavLink>
               </NavItem>
               <NavItem active>
@@ -94,8 +99,8 @@ class App extends Component {
             {/* ROUTES */}
               <Route exact path="/" component={Home} />
               <Route exact path="/Signup" component={Signup} />
-              {/* <Route exact path="/Login" component={Login} />
-              <Route path="/Register" component={Register} /> */}
+              <Route exact path="/Login" component={Login} />
+              <Route path="/Register" component={Register} />
               <Route path= "/Github" component={Github}/>
               <Route path= "/Trello" component={Trello}/>
               <Route path= "/Team" component={Team}/>

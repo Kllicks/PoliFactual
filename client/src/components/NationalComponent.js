@@ -2,7 +2,8 @@ import { Timeline } from "react-twitter-widgets";
 import React, { Component } from "react";
 // import TwitterHandle from "./TwitterHandle";
 import Styles from "../styles/National.css";
-import { MDBIcon, MDBContainer, MDBBtn } from "mdbreact";
+
+import { MDBIcon, MDBContainer, MDBBtn, MDBRow, MDBCol } from "mdbreact";
 import {
   Button,
   Card,
@@ -96,18 +97,21 @@ class Nationals extends Component {
   render() {
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
       return (
-        <Col>
+        <MDBContainer>
+          <MDBRow>
+            <MDBCol>
+        {/* <Col> */}
           <Card style={{ width: "20rem" }}>
             {/* <CardImage
               className="img-fluid"
               src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
               /> */}
             <CardBody className="h-100 w-100">
-              <ul key={index}>
+              <li key={index}>
                 <CardTitle>
                   {item.photo ? (
                     <div>
-                      <img src={item.photo} alt="" />
+                      <img style={{width: '13rem', height: '15rem'}} src={item.photo} alt="" />
                     </div>
                   ) : null}
                   {item.personName ? <div>{item.personName}</div> : null}
@@ -145,7 +149,7 @@ class Nationals extends Component {
                   ) : null}
                   <div />
                 </CardText>
-              </ul>
+              </li>
               <MDBContainer>
                 <MDBBtn size="lg" tag="a" floating social="email">
                   <MDBIcon icon="envelope" />
@@ -153,7 +157,10 @@ class Nationals extends Component {
               </MDBContainer>
             </CardBody>
           </Card>
-        </Col>
+        {/* </Col> */}
+        </MDBCol>
+  </MDBRow>
+</MDBContainer>
       );
     });
 
@@ -162,7 +169,7 @@ class Nationals extends Component {
       //   <div>{officeNames}</div>
       // </div>
       <div>
-        <p>{officeNames}</p>
+        <div>{officeNames}</div>
       </div>
     );
   }
