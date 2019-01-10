@@ -131,6 +131,10 @@ app.post('/api/login', (req, res) => {
 // ================================================================================================
 //                                              USER LOGOUT
 // ================================================================================================
+app.get("/api/verify", (req, res) => {
+    res.json(req.session.user);
+});
+
 app.post('/api/logout', (req, res) => {
     // End session and redirect them to the home page
     req.session.destroy(() => {
