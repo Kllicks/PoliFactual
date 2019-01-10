@@ -6,7 +6,6 @@ import Login from "./Login";
 import Register from "./Register";
 
 import Home from "./HomeComponent";
-import Signup from "./Signup";
 import Locals from './LocalComponent';
 import States from './StateComponent';
 import Nationals from './NationalComponent';
@@ -19,27 +18,48 @@ import axios from 'axios';
 import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, FormInline, Dropdown, DropdownToggle, DropdownMenu,  DropdownItem } from "mdbreact";
 import { MDBBtn } from "mdbreact";
 
+
 import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch,
-  Redirect
+	BrowserRouter as Router,
+	Route,
+	Link,
+	Switch,
+	Redirect
 } from "react-router-dom";
+
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // isLoggedIn: false
+      isLoggedIn: false
     };
   }
 
-  // toggleCollapse = this.setState({ isOpen: !this.state.isOpen });
+  clickLogout = () => {
+    axios.post("/api/logout").then(res => {
+      this.setState({ isLoggedIn: false });
+    });
+  }
 
-  // componentDidMount() {
-  //   setInterval(this.checkLoggedIn, 3005);
-  // }
+  componentDidMount() {
+    axios.get("/api/verify"). then(res => {
+      if (res.data.user){
+        this.setState({ isLoggedIn: true }, () => {
+          const user = res.data.user;
+          sessionStorage.setItem('streetaddress', user.streetaddress);
+          sessionStorage.setItem('currentstate', user.currentstate);
+          sessionStorage.setItem('zipcode', user.zipcode);
+          console.log("logged in");
+          this.props.history.push("/")
+        });
+      } else {
+      }
+    })
+  }
+
+// toggleCollapse = this.setState({ isOpen: !this.state.isOpen });
+
 
   render() {
     return (
@@ -103,9 +123,13 @@ class App extends Component {
                       </div>
                   </FormInline>
                 </NavItem>
+
+                <button onClick={this.clickLogout}>Logout</button>
+
               </NavbarNav>
-                {/* {this.showLogoutButton()} */}
-                {/* <MDBBtn rounded color="danger">Logout</MDBBtn> */}
+             
+             
+              
               </Collapse>
               </Navbar>
 
@@ -120,71 +144,17 @@ class App extends Component {
               <Route path="/Local" component={Locals}/>
               <Route path= "/State" component={States}/>
               <Route path= "/National" component={Nationals}/>
+
             </>
           </Router>
 
-        {/* Footer */}
-        <FooterPage />
+				{/* Footer */}
+				<FooterPage />
 
-      </div>
-    );
-  }
+			</div>
+		);
+	}
 }
 
-// showLogoutButton = () => {
-//   let shouldShowLogout = false;
-  // if (this.props.location.pathname === "/Login") {
-  //   shouldShowLogout = false;
-  // } else if (this.props.location.pathname === "/Register") {
-  //   shouldShowLogout = false;
-  // } else if (this.props.location.pathname === "/") {
-  //   shouldShowLogout = false;
-  // } else if (this.state.isLoggedIn) {
-  //   shouldShowLogout = true;
-  // } else {
-  //   shouldShowLogout = false;
-  // }
-
-  //  if (shouldShowLogout) {
-  //   return (
-  //     <li>
-  //       <a href="#" onClick={this.logOut}>
-  //         Logout
-  //       </a>
-  //     </li>
-  //   );
-  // } else {
-  //   return null;
-  // }
-// };
-
-// checkLoggedIn = () => {
-//   axios.get("/api/verify").then(res => {
-//     // console.log(res);
-//     this.setState(
-//       {
-//         isLoggedIn: res.data !== "" // If it's not empty, then it's their user id, which means, they're logged in
-//       },
-//       () => {
-//         if (this.props.location.pathname === "/signup") {
-//           console.log("you are at signup you are ok");
-//         } else if (this.props.location.pathname === "/about") {
-//           console.log("you are at about you are ok");
-//         } else if (this.state.isLoggedIn) {
-//           console.log("you are at logged in you are ok");
-//         } else {
-//           console.log("go home");
-//           this.props.history.push("/");
-//         }
-//       }
-//     );
-//   });
-// };
-
-// logOut = () => {
-//   axios.post("/api/logout").then(res => {
-//     this.setState({ isLoggedIn: false });
-//   });
-// };
 
 export default App;
