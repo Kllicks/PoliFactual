@@ -143,7 +143,9 @@ class App extends Component {
               <Route exact path="/Login" render={(props) => {
                   return (<Login doLoggedIn={this.doLoggedIn} {...props} />)
               }} />
-              <Route path="/Register" component={Register} />
+              <Route path="/Register" render={(props) => {
+                return (<Register doLoggedIn={this.doLoggedIn} {...props}/>)
+              }} />
               <Route path= "/Github" component={Github}/>
               <Route path= "/Trello" component={Trello}/>
               <Route path= "/Team" component={Team}/>
