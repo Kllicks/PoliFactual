@@ -63,10 +63,7 @@ class App extends Component {
       }
     })
   }
-
-// toggleCollapse = this.setState({ isOpen: !this.state.isOpen });
-
-
+  
   render() {
     return (
       <div className="App bg">
