@@ -24,8 +24,16 @@ class Nationals extends Component {
   }
 
   componentDidMount() {
+    let streetaddress = sessionStorage.getItem("streetaddress");
+    console.log(streetaddress);
+    let zipcode = sessionStorage.getItem("zipcode");
+    console.log(zipcode);
+
+    const addressUrl = encodeURI(`${streetaddress} ${zipcode}`);
+    console.log(addressUrl);
+
     fetch(
-      "https://www.googleapis.com/civicinfo/v2/representatives?address=line%20st.%2030032&includeOffices=true&key=AIzaSyB3cRW6zO8D3INc-NHDFA-0ck77gQAYpOU",
+      `https://www.googleapis.com/civicinfo/v2/representatives?address=${addressUrl}&includeOffices=true&key=AIzaSyB3cRW6zO8D3INc-NHDFA-0ck77gQAYpOU`,
       { headers: { "Content-Type": "application/json; charset=utf-8" } }
     )
       .then(response => response.json())
@@ -100,65 +108,79 @@ class Nationals extends Component {
         <MDBContainer>
           <MDBRow>
             <MDBCol>
-        {/* <Col> */}
-          <Card style={{ width: "20rem" }}>
-            {/* <CardImage
+              {/* <Col> */}
+              <Card style={{ width: "20rem" }}>
+                {/* <CardImage
               className="img-fluid"
               src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
               /> */}
-            <CardBody className="h-100 w-100">
-              <li key={index}>
-                <CardTitle>
-                  {item.photo ? (
-                    <div>
-                      <img style={{width: '13rem', height: '15rem'}} src={item.photo} alt="" />
-                    </div>
-                  ) : null}
-                  {item.personName ? <><a href={item.url}>{item.personName}</a></> : null}
-                  <br />
-                  {item.officeName ? <>{item.officeName}</> : null}
-                  <br />
-                </CardTitle>
-                <CardText>
-                  {item.address.line1 ? <>{item.address.line1}</> : null}
-                  {item.address.line2 ? <>{item.address.line2}</> : null}
-                  {item.address.city ? <>{item.address.city}</> : null}
-                  {item.address.state ? <>{item.address.state}</> : null}
-                  {item.address.zip ? <>{item.address.zip}</> : null}
-                  {item.party ? <>{item.party}</> : null}
-                  {item.phoneNumber ? <>{item.phoneNumber}</> : null}
-                  {/* {item.url ? <a href={item.url}>{item.url}</a> : null} */}
-                  {item.twitter ? (
-                    <>
-                      <Timeline
-                        dataSource={{
-                          sourceType: "profile",
-                          screenName: item.twitter
-                        }}
-                        options={{
-                          username: item.twitter,
-                          height: "400",
-                          width: "60%"
-                        }}
-                        onLoad={() => console.log("Timeline is loaded!")}
-                      />
-                    </>
-                  ) : null}
-                </CardText>
-              </li>
-              <MDBContainer>
-              {item.email ? (
-                    <MDBBtn size="lg" tag="a" floating social="email" href={"mailto:" + item.email}>
-                    <MDBIcon icon="envelope" />
-                  </MDBBtn>
-                  ) : null}
-              </MDBContainer>
-            </CardBody>
-          </Card>
-        {/* </Col> */}
-        </MDBCol>
-  </MDBRow>
-</MDBContainer>
+                <CardBody className="h-100 w-100">
+                  <li key={index}>
+                    <CardTitle>
+                      {item.photo ? (
+                        <div>
+                          <img
+                            style={{ width: "13rem", height: "15rem" }}
+                            src={item.photo}
+                            alt=""
+                          />
+                        </div>
+                      ) : null}
+                      {item.personName ? (
+                        <>
+                          <a href={item.url}>{item.personName}</a>
+                        </>
+                      ) : null}
+                      <br />
+                      {item.officeName ? <>{item.officeName}</> : null}
+                      <br />
+                    </CardTitle>
+                    <CardText>
+                      {item.address.line1 ? <>{item.address.line1}</> : null}
+                      {item.address.line2 ? <>{item.address.line2}</> : null}
+                      {item.address.city ? <>{item.address.city}</> : null}
+                      {item.address.state ? <>{item.address.state}</> : null}
+                      {item.address.zip ? <>{item.address.zip}</> : null}
+                      {item.party ? <>{item.party}</> : null}
+                      {item.phoneNumber ? <>{item.phoneNumber}</> : null}
+                      {/* {item.url ? <a href={item.url}>{item.url}</a> : null} */}
+                      {item.twitter ? (
+                        <>
+                          <Timeline
+                            dataSource={{
+                              sourceType: "profile",
+                              screenName: item.twitter
+                            }}
+                            options={{
+                              username: item.twitter,
+                              height: "400",
+                              width: "60%"
+                            }}
+                            onLoad={() => console.log("Timeline is loaded!")}
+                          />
+                        </>
+                      ) : null}
+                    </CardText>
+                  </li>
+                  <MDBContainer>
+                    {item.email ? (
+                      <MDBBtn
+                        size="lg"
+                        tag="a"
+                        floating
+                        social="email"
+                        href={"mailto:" + item.email}
+                      >
+                        <MDBIcon icon="envelope" />
+                      </MDBBtn>
+                    ) : null}
+                  </MDBContainer>
+                </CardBody>
+              </Card>
+              {/* </Col> */}
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
       );
     });
 
