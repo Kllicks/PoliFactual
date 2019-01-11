@@ -12,6 +12,7 @@ import Nationals from './NationalComponent';
 import Team from './Team';
 import Trello from './Trello';
 import Github from './Github';
+import LogoutButton from './logoutButton';
 
 import axios from 'axios';
 
@@ -36,11 +37,13 @@ class App extends Component {
     };
   }
 
-  clickLogout = () => {
+  clickLogout = (props) => {
+    return () => {
     axios.post("/api/logout").then(res => {
-      this.setState({ isLoggedIn: false });
+        props.history.push('/');
+        this.setState({ isLoggedIn: false });
     });
-  }
+  }}
 
   doLoggedIn = () => {
     this.setState({ isLoggedIn: true });
@@ -60,10 +63,7 @@ class App extends Component {
       }
     })
   }
-
-// toggleCollapse = this.setState({ isOpen: !this.state.isOpen });
-
-
+  
   render() {
     return (
       <div className="App bg">
@@ -84,12 +84,6 @@ class App extends Component {
             <NavbarNav left>
               <NavItem active>
               <NavLink to="/">Home</NavLink>
-              </NavItem>
-              <NavItem active>
-              <NavLink to="/Register">Register</NavLink>
-              </NavItem>
-              <NavItem active>
-              <NavLink to="/Login">Login</NavLink>
               </NavItem>
               <NavItem active>
               <NavLink to="/Github">Github</NavLink>
@@ -114,20 +108,8 @@ class App extends Component {
               </NavItem>
               </NavbarNav>
               <NavbarNav right>
-                <NavItem>
-                  <FormInline waves>
-                      <div className="md-form my-0 indigo darken-4">
-                      <input
-                          className="form-control mr-sm-2"
-                          type="text"
-                          placeholder="Search"
-                          aria-label="Search"
-                      />
-                      </div>
-                  </FormInline>
-                </NavItem>
                 {
-                  this.state.isLoggedIn ? <button onClick={this.clickLogout}>Logout</button> : <button onClick={this.clickLogin}>Login</button>
+                  this.state.isLoggedIn ? <LogoutButton clickLogout={this.clickLogout} /> : <Link to="/Register"><MDBBtn floating gradient="grey lighten-5" onClick={this.clickLogin}>Register</MDBBtn></Link> 
                 }
 
               </NavbarNav>
@@ -138,7 +120,10 @@ class App extends Component {
               </Navbar>
 
             {/* ROUTES */}
-              <Route exact path="/" component={Home} />
+              {/* <Route exact path="/" component={Home} /> */}
+              <Route exact path="/" render={(props) => {
+                return (<Home clickLogout={this.clickLogout} {...props} />)
+              }} />
               {/* <Route exact path="/Signup" component={Signup} /> */}
               <Route exact path="/Login" render={(props) => {
                   return (<Login doLoggedIn={this.doLoggedIn} {...props} />)
