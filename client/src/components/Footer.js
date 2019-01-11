@@ -25,20 +25,20 @@ import {
           </p>
           </Col>
           <Col md="6">
-          <h5 className="title indigo darken-3">Links</h5>
+          <h5 className="title indigo darken-3">More Information</h5>
           <ul>
             <li className="list-unstyled">
-              <a href="#!">Link 1</a>
+              <a href="#!">About Us</a>
             </li>
             <li className="list-unstyled">
-              <a href="#!">Link 2</a>
+              <a href="#!">Hiring? Checkout the developers that created Polifactual!</a>
             </li>
-            <li className="list-unstyled">
+            {/* <li className="list-unstyled">
               <a href="#!">Link 3</a>
             </li>
             <li className="list-unstyled">
               <a href="#!">Link 4</a>
-            </li>
+            </li> */}
           </ul>
           </Col>
         </Row>
@@ -46,7 +46,7 @@ import {
       <div className="footer-copyright text-center py-3">
         <Container fluid>
           &copy; {new Date().getFullYear()} Copyright:{" "}
-          <a href=""> Helen, Kyle, Brien, Isaac </a>
+          <a href=""> Helen, Kyle, Brien, Isaac Fonseca </a>
         </Container>
       </div>
     </Footer>
