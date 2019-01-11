@@ -11,7 +11,7 @@ const Trello = () => {
             <MDBCard reverse>
               <MDBView hover cascade waves>
                 <img
-                  src="https://mdbootstrap.com/img/Photos/Slides/img%20(142).jpg"
+                  src= "../styles/images/Trello-min.png"
                   alt=""
                   className="img-fluid"
                 /> 
