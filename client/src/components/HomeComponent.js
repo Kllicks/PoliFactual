@@ -31,10 +31,7 @@ class Home extends React.Component {
                     </h1>
                     <hr className="hr-light" />
                     <h6 className="mb-4">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Rem repellendus quasi fuga nesciunt dolorum nulla magnam
-                      veniam sapiente, fugiat! Commodi sequi non animi ea dolor
-                      molestiae iste.
+                      Bringing you your local, state, and national legislative representatives' information right to you from one source.
                     </h6>
                     <MDBBtn color="white">Download</MDBBtn>
                     <MDBBtn outline color="white">
@@ -224,9 +221,7 @@ class Home extends React.Component {
           What all can Polifactual do?
         </h2>
         <p className="lead grey-text w-responsive text-center mx-auto mb-5">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-          ad minim veniam.
+          Below you will see several points highlighting some of our features  
         </p>
 
         <MDBRow>
@@ -253,9 +248,7 @@ class Home extends React.Component {
               <MDBCol size="10">
                 <h5 className="font-weight-bold mb-3">Experimental</h5>
                 <p className="grey-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Reprehenderit maiores nam, aperiam minima assumenda deleniti
-                  hic.
+                Want to see who represents other areas and not just your current locality? You can change your information to display other localities and inform you of other representatives.
                 </p>
               </MDBCol>
             </MDBRow>
@@ -264,11 +257,9 @@ class Home extends React.Component {
                 <MDBIcon icon="glass" size="2x" className="deep-purple-text" />
               </MDBCol>
               <MDBCol size="10">
-                <h5 className="font-weight-bold mb-3">Relaxing</h5>
+                <h5 className="font-weight-bold mb-3">Personal</h5>
                 <p className="grey-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Reprehenderit maiores nam, aperiam minima assumenda deleniti
-                  hic.
+                  Once you are registered, you will be able to see your unique homepage, with your local and state information.
                 </p>
               </MDBCol>
             </MDBRow>
@@ -286,11 +277,9 @@ class Home extends React.Component {
                 <MDBIcon icon="heart" size="2x" className="deep-purple-text" />
               </MDBCol>
               <MDBCol size="10">
-                <h5 className="font-weight-bold mb-3">Beloved</h5>
+                <h5 className="font-weight-bold mb-3">Twitter</h5>
                 <p className="grey-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Reprehenderit maiores nam, aperiam minima assumenda deleniti
-                  hic.
+                  Want to go ahead and follow your representatives or like their posts? Polifactual allows you to see twitter feeds for those who are on the social media site.
                 </p>
               </MDBCol>
             </MDBRow>
@@ -312,9 +301,7 @@ class Home extends React.Component {
               <MDBCol size="10">
                 <h5 className="font-weight-bold mb-3">Magical</h5>
                 <p className="grey-text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Reprehenderit maiores nam, aperiam minima assumenda deleniti
-                  hic.
+                  
                 </p>
               </MDBCol>
             </MDBRow>
