@@ -109,7 +109,7 @@ class App extends Component {
               </NavbarNav>
               <NavbarNav right>
                 {
-                  this.state.isLoggedIn ? <LogoutButton clickLogout={this.clickLogout} /> : <Link to="/Register"><MDBBtn floating gradient="grey lighten-5" onClick={this.clickLogin}>Register</MDBBtn></Link> 
+                  this.state.isLoggedIn ? <LogoutButton clickLogout={this.clickLogout} /> : <Link to="/Register"><MDBBtn floating color="indigo darken-4" onClick={this.clickLogin}>Register</MDBBtn></Link> 
                 }
 
               </NavbarNav>
