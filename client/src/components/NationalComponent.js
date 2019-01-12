@@ -26,8 +26,16 @@ class Nationals extends Component {
   }
 
   componentDidMount() {
+    let streetaddress = sessionStorage.getItem("streetaddress");
+    console.log(streetaddress);
+    let zipcode = sessionStorage.getItem("zipcode");
+    console.log(zipcode);
+
+    const addressUrl = encodeURI(`${streetaddress} ${zipcode}`);
+    console.log(addressUrl);
+
     fetch(
-      "https://www.googleapis.com/civicinfo/v2/representatives?address=line%20st.%2030032&includeOffices=true&key=AIzaSyB3cRW6zO8D3INc-NHDFA-0ck77gQAYpOU",
+      `https://www.googleapis.com/civicinfo/v2/representatives?address=${addressUrl}&includeOffices=true&key=AIzaSyB3cRW6zO8D3INc-NHDFA-0ck77gQAYpOU`,
       { headers: { "Content-Type": "application/json; charset=utf-8" } }
     )
       .then(response => response.json())
@@ -99,6 +107,7 @@ class Nationals extends Component {
   render() {
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
       return (
+
         <MDBContainer className="main d-flex flex-row"> 
           <Card style={{ width: "30rem" }} className="p-2">
             {/* <CardImage
@@ -154,6 +163,7 @@ class Nationals extends Component {
             </CardBody>
           </Card>
  
+
         </MDBContainer>
       );
     });
