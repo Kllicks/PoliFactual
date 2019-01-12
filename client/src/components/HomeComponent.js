@@ -55,10 +55,6 @@ class Home extends React.Component {
             </MDBMask>
         </MDBContainer>
 
-        <br />
-        <br />
-        <br/>
-
 
  {/* Second Section */}
  <MDBContainer className="second">

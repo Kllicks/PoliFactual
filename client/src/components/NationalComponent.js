@@ -1,7 +1,9 @@
 import { Timeline } from "react-twitter-widgets";
 import React, { Component } from "react";
 // import TwitterHandle from "./TwitterHandle";
-import Styles from "../styles/National.css";
+
+
+import { Carousel, CarouselInner, CarouselItem, Container, Row } from "mdbreact";
 
 import { MDBIcon, MDBContainer, MDBBtn, MDBRow, MDBCol } from "mdbreact";
 import {
@@ -97,11 +99,8 @@ class Nationals extends Component {
   render() {
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
       return (
-        <MDBContainer>
-          <MDBRow>
-            <MDBCol>
-        {/* <Col> */}
-          <Card style={{ width: "20rem" }}>
+        <MDBContainer className="main d-flex flex-row"> 
+          <Card style={{ width: "30rem" }} className="p-2">
             {/* <CardImage
               className="img-fluid"
               src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
@@ -127,7 +126,6 @@ class Nationals extends Component {
                   {item.address.zip ? <>{item.address.zip}</> : null}
                   {item.party ? <>{item.party}</> : null}
                   {item.phoneNumber ? <>{item.phoneNumber}</> : null}
-                  {/* {item.url ? <a href={item.url}>{item.url}</a> : null} */}
                   {item.twitter ? (
                     <>
                       <Timeline
@@ -155,19 +153,15 @@ class Nationals extends Component {
               </MDBContainer>
             </CardBody>
           </Card>
-        {/* </Col> */}
-        </MDBCol>
-  </MDBRow>
-</MDBContainer>
+ 
+        </MDBContainer>
       );
     });
 
     return (
-      // <div>
-      //   <div>{officeNames}</div>
-      // </div>
+
       <div>
-        <div>{officeNames}</div>
+        <>{officeNames}</>
       </div>
     );
   }
