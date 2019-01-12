@@ -34,11 +34,78 @@ class App extends Component {
     super(props);
     this.state = {
       isLoggedIn: false,
-      isOpen: false
+      // isOpen: false
     };
+    
+    // this.events = [
+    //   "load",
+    //   "mousemove",
+    //   "mousedown",
+    //   "scroll",
+    //   "keypress"
+    // ];
+
+    // this.warn = this.warn.bind(this);
+    // this.resetTimeout = this.resetTimeout.bind(this);
+
+    // for (let i in this.events) {
+    //   window.addEventListener(this.events[i], this.resetTimeout);
+    // }
+
+    // this.setTimeout();
+
   }
-  
-  toggleCollapse = (props) => {
+
+  // clearTimeout() {
+  //   if (this.warnTimeout) clearTimeout(this.warnTimeout);
+
+  //   if (this.logoutTimeout) clearTimeout(this.logoutTimeout);
+  // }
+
+  // setTimeout() {
+  //   this.warnTimeout = setTimeout(this.warn, 16 * 1000);
+
+  //   this.logoutTimeout = setTimeout(this.clickLogout, 30 * 1000);
+  // }
+
+  // resetTimeout() {
+  //   this.clearTimeout();
+  //   this.setTimeout();
+  // }
+
+  // warn() {
+  //   alert("You will be logged out automatically in 1 minute.");
+  // }
+
+  // destroy() {
+  //   this.clearTimeout();
+
+  //   for (let i in this.events) {
+  //     window.removeEventListener(this.events[i], this.resetTimeout);
+  //   }
+  // }
+
+  PrivateRoute = ({ component: Component, ...rest }) => {
+    return (
+      <Route
+        {...rest}
+        render={props =>
+          this.state.isLoggedIn === true ? (
+            <Component {...props} />
+          ) : (
+            <Redirect
+              to={{
+                pathname: "/login",
+                state: { from: props.location }
+              }}
+            />
+          )
+        }
+      />
+    );
+  }
+
+  toggleCollapse = () => {
     this.setState({ isOpen: !this.state.isOpen });
   }
 
