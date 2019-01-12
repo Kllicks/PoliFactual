@@ -15,7 +15,8 @@
     "react-scripts": "2.1.2",
     "react-tap-event-plugin": "^3.0.3",
     "react-twitter-widgets": "^1.7.1",
-    "reactstrap": "^7.0.2"
+    "reactstrap": "^7.0.2",
+    "smartystreets-javascript-sdk": "^1.1.7"
   },
   "scripts": {
     "start": "react-scripts start",
