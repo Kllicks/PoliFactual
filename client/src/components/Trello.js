@@ -24,10 +24,9 @@ const Trello = () => {
                 <p>
                   Check out our Trello page!
                 </p>
-                <MDBBtn className="btn-fb waves-light">
-                  <MDBIcon icon="Trello" className="pr-2" />
+                <MDBBtn className="btn-fb waves-light" color="indigo darken-4">
+                  <MDBIcon icon="trello" className="" />
                   <a href="https://trello.com/b/pipJjSew/capstone-project">Trello</a>
-                 
                 </MDBBtn>
               </MDBCardBody>
             </MDBCard>
@@ -35,7 +34,6 @@ const Trello = () => {
               <p>
                 Our team choose to use Trello as our choice of project planning software. We choose to use Trello to manage our web project for two reasons. It is free and helps keep us organized and focused. 
               </p>
-              
             </MDBContainer>
           </MDBCol>
         </MDBRow>

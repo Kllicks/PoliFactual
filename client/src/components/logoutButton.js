@@ -14,6 +14,6 @@ import axios from 'axios';
 
 let logoutButton = (props) => {
     return (
-        <button onClick={props.clickLogout(props)}>Logout</button>
+        <MDBBtn color="indigo darken-4" onClick={props.clickLogout(props)}>Logout</MDBBtn>
 )};
 export default withRouter(logoutButton);

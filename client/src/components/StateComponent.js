@@ -101,8 +101,8 @@ class States extends Component {
   render() {
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
       return (
-        <Col>
-          <Card style={{ width: "20rem" }}>
+        <Col className="main d-flex flex-row">
+          <Card style={{ width: "20rem" }} className="p-2">
             {/* <CardImage
               className="img-fluid"
               src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg"

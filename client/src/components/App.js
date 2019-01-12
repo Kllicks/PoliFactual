@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../styles/App.css";
+import Styles from "../styles/App.css";
 import FooterPage from './Footer';
 
 import Login from "./Login";
@@ -67,8 +67,8 @@ class App extends Component {
   render() {
     return (
       <div className="App bg">
-      <Router>
-        <>
+        <Router>
+          <>
             <Navbar color="transparent" dark expand="md">
               <NavbarBrand>
               <strong className="white-text">Polifactual</strong>
@@ -95,7 +95,7 @@ class App extends Component {
               <NavLink to="/Team">Meet The Team</NavLink>
               </NavItem>
               <NavItem>
-              <Dropdown>
+              {/* <Dropdown>
                   <DropdownToggle nav caret>
                   <div className="d-none d-md-inline">Profile</div>
                   </DropdownToggle>
@@ -104,12 +104,12 @@ class App extends Component {
                   <DropdownItem href="/State">State</DropdownItem>
                   <DropdownItem href="/National">National</DropdownItem>
                   </DropdownMenu>
-              </Dropdown>
+              </Dropdown> */}
               </NavItem>
               </NavbarNav>
               <NavbarNav right>
                 {
-                  this.state.isLoggedIn ? <LogoutButton clickLogout={this.clickLogout} /> : <Link to="/Register"><MDBBtn floating gradient="grey lighten-5" onClick={this.clickLogin}>Register</MDBBtn></Link> 
+                  this.state.isLoggedIn ? <LogoutButton clickLogout={this.clickLogout} /> : <Link to="/Register"><MDBBtn floating color="indigo darken-4" onClick={this.clickLogin}>Register</MDBBtn></Link>
                 }
 
               </NavbarNav>
@@ -134,9 +134,9 @@ class App extends Component {
               <Route path= "/Github" component={Github}/>
               <Route path= "/Trello" component={Trello}/>
               <Route path= "/Team" component={Team}/>
-              <Route path="/Local" component={Locals}/>
-              <Route path= "/State" component={States}/>
-              <Route path= "/National" component={Nationals}/>
+              <Route exact path="/Local" component={Locals}/>
+              <Route exact path= "/State" component={States}/>
+              <Route exact path= "/National" component={Nationals}/>
 
             </>
           </Router>
