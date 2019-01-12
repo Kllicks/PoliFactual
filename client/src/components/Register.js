@@ -105,10 +105,9 @@ class Register extends Component {
     render() {
         return (
           <MDBMask className="d-flex justify-content-center align-items-center gradient">
-            <MDBContainer>
-            {/* <div class="container-register"> */}
+            <MDBContainer className="main">
             <MDBRow>
-                <div className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5">
+                <div className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5 signuparea">
                   <h1 className="h1-responsive font-weight-bold">
                     Sign up right now!{" "}
                   </h1>
@@ -125,13 +124,13 @@ class Register extends Component {
                 </div>
                 <MDBCol md="6" xl="5" className="mb-4">
                   <MDBCard id="classic-card">
-                    <MDBCardBody className="z-depth-2 indigo-text" >
+                    <MDBCardBody className="z-depth-2 indigo-text sizing" >
                     <form className="signup-form" onSubmit={this._handleSubmit}>
                       <h3 className="text-center">
                         <MDBIcon icon="user" /> Register:
                       </h3>
                       <hr className="hr-light" />
-                        <MDBInput 
+                        <MDBInput left
                             id="name" 
                             label="Your name" 
                             icon="user" 
