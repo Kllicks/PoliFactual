@@ -33,8 +33,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false
+      isLoggedIn: false,
+      isOpen: false
     };
+  }
+  
+  toggleCollapse = (props) => {
+    this.setState({ isOpen: !this.state.isOpen });
   }
 
   clickLogout = (props) => {
@@ -69,77 +74,75 @@ class App extends Component {
       <div className="App bg">
       <Router>
         <>
-            <Navbar color="transparent" dark expand="md">
-              <NavbarBrand>
+          <Navbar color="transparent" dark expand="md">
+            <NavbarBrand>
               <strong className="white-text">Polifactual</strong>
-              </NavbarBrand>
-              <NavbarToggler
+            </NavbarBrand>
+            <NavbarToggler
               onClick={this.toggleCollapse}
-              />
-              <Collapse
-              id="navbarCollapse3"
-              isOpen={this.state.isOpen}
-              navbar
-              >
-            <NavbarNav left>
-              <NavItem active>
-              <NavLink to="/">Home</NavLink>
-              </NavItem>
-              <NavItem active>
-              <NavLink to="/Github">Github</NavLink>
-              </NavItem>
-              <NavItem active>
-              <NavLink to="/Trello">Trello</NavLink>
-              </NavItem>
-              <NavItem active>
-              <NavLink to="/Team">Meet The Team</NavLink>
-              </NavItem>
-              <NavItem>
-              <Dropdown>
-                  <DropdownToggle nav caret>
-                  <div className="d-none d-md-inline">Profile</div>
-                  </DropdownToggle>
-                  <DropdownMenu right>
-                  <DropdownItem href="/Local">Local</DropdownItem>
-                  <DropdownItem href="/State">State</DropdownItem>
-                  <DropdownItem href="/National">National</DropdownItem>
-                  </DropdownMenu>
-              </Dropdown>
-              </NavItem>
+            />
+            <Collapse
+            id="navbarCollapse3"
+            isOpen={this.state.isOpen}
+            navbar
+            >
+              <NavbarNav left>
+                <NavItem active>
+                  <NavLink to="/">Home</NavLink>
+                </NavItem>
+                <NavItem active>
+                  <NavLink to="/Github">Github</NavLink>
+                </NavItem>
+                <NavItem active>
+                  <NavLink to="/Trello">Trello</NavLink>
+                </NavItem>
+                <NavItem active>
+                  <NavLink to="/Team">Meet The Team</NavLink>
+                </NavItem>
+                <NavItem>
+                  <Dropdown>
+                    <DropdownToggle nav caret>
+                      <div className="d-none d-md-inline">Profile</div>
+                    </DropdownToggle>
+                    <DropdownMenu right>
+                      <DropdownItem href="/Local">Local</DropdownItem>
+                      <DropdownItem href="/State">State</DropdownItem>
+                      <DropdownItem href="/National">National</DropdownItem>
+                    </DropdownMenu>
+                  </Dropdown>
+                </NavItem>
               </NavbarNav>
               <NavbarNav right>
                 {
                   this.state.isLoggedIn ? <LogoutButton clickLogout={this.clickLogout} /> : <Link to="/Register"><MDBBtn floating gradient="grey lighten-5" onClick={this.clickLogin}>Register</MDBBtn></Link> 
                 }
-
               </NavbarNav>
-             
-             
-              
-              </Collapse>
-              </Navbar>
+          
+          
+            
+            </Collapse>
+          </Navbar>
 
-            {/* ROUTES */}
-              {/* <Route exact path="/" component={Home} /> */}
-              <Route exact path="/" render={(props) => {
-                return (<Home clickLogout={this.clickLogout} {...props} />)
-              }} />
-              {/* <Route exact path="/Signup" component={Signup} /> */}
-              <Route exact path="/Login" render={(props) => {
-                  return (<Login doLoggedIn={this.doLoggedIn} {...props} />)
-              }} />
-              <Route path="/Register" render={(props) => {
-                return (<Register doLoggedIn={this.doLoggedIn} {...props}/>)
-              }} />
-              <Route path= "/Github" component={Github}/>
-              <Route path= "/Trello" component={Trello}/>
-              <Route path= "/Team" component={Team}/>
-              <Route path="/Local" component={Locals}/>
-              <Route path= "/State" component={States}/>
-              <Route path= "/National" component={Nationals}/>
-
-            </>
-          </Router>
+        {/* ROUTES */}
+          {/* <Route exact path="/" component={Home} /> */}
+          <Route exact path="/" render={(props) => {
+            return (<Home clickLogout={this.clickLogout} {...props} />)
+          }} />
+          {/* <Route exact path="/Signup" component={Signup} /> */}
+          <Route exact path="/Login" render={(props) => {
+              return (<Login doLoggedIn={this.doLoggedIn} {...props} />)
+          }} />
+          <Route path="/Register" render={(props) => {
+            return (<Register doLoggedIn={this.doLoggedIn} {...props}/>)
+          }} />
+          <Route path= "/Github" component={Github}/>
+          <Route path= "/Trello" component={Trello}/>
+          <Route path= "/Team" component={Team}/>
+          <Route path="/Local" component={Locals}/>
+          <Route path= "/State" component={States}/>
+          <Route path= "/National" component={Nationals}/>
+        </>
+      </Router>
 
 				{/* Footer */}
 				<FooterPage />

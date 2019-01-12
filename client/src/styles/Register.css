@@ -21,7 +21,6 @@ body {
 }
 
 .container-login {
-<<<<<<< HEAD
     background-color: #FCFCFC;
     position: relative;
     top: 20%;
@@ -56,43 +55,7 @@ body {
     border-top-right-radius: 0.22em;
     font-size: 25px;
     color: white;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-=======
-  background-color: #fcfcfc;
-  position: relative;
-  top: 20%;
-  margin: auto;
-  width: 350px;
-  height: 580px;
-  border-radius: 0.35em;
-  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
-  text-align: center;
-}
-
-.container-register {
-  background-color: #fcfcfc;
-  position: relative;
-  top: 20%;
-  margin: auto;
-  width: 350px;
-  height: 580px;
-  border-radius: 0.35em;
-  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
-  text-align: center;
-  z-index: 1;
-}
-
-.title {
-  position: relative;
-  background-color: rgb(12, 92, 145);
-  width: 100%;
-  padding: 20px 0px;
-  border-top-left-radius: 0.22em;
-  border-top-right-radius: 0.22em;
-  font-size: 25px;
-  color: white;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
->>>>>>> staging
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.05); */
 }
 
 /* .lock {
