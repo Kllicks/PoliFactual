@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
-import "../styles/Login.css";
+import "../styles/Register.css";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBMask, MDBRow, MDBCol, MDBIcon,
 	MDBBtn, MDBView, MDBContainer, MDBCard, MDBCardBody, MDBInput, MDBFormInline } from "mdbreact";
 
@@ -82,7 +82,7 @@ class Login extends Component {
     }
 	return (
 		<MDBMask className="d-flex justify-content-center align-items-center gradient">
-		<MDBContainer>
+		<MDBContainer className="main">
 		  <MDBRow>
 			<div className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5">
 			  <h1 className="h1-responsive font-weight-bold">
