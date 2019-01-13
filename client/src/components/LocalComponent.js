@@ -69,7 +69,7 @@ class Locals extends Component {
     // console.log(zip9);
 
     function handleError(response) {
-      console.log(response[0]);
+      // console.log(response[0]);
     }
     let myZipCode = 30032;
     let postZip = 3311;
@@ -116,7 +116,22 @@ class Locals extends Component {
       .then(results => {
         let newResults = Object.values(results); // newResults is the json response array of the users civic representives at each elected level of government.
         // let otherResults = Object.values(combinedData.apiRequest2); // otherResults will be json response array of the users civic representives at each elected level of government.
-        console.log(newResults);
+        console.log(newResults[0].candidate);
+        let candidateArray = newResults[0].candidate;
+        console.log(candidateArray);
+        let candidateIdArray = [];
+        candidateArray.forEach(id => {
+          console.log("hi");
+          console.log(id.candidateId);
+          let candidateValueArray = candidateIdArray.candidateId;
+          console.log(candidateIdArray);
+          console.log(candidateValueArray);
+          let localCandidateIdArray = {
+            id: id.candidateId
+          };
+          candidateIdArray.push(localCandidateIdArray);
+        });
+
         // console.log(otherResults);
         // let officesArray = newResults[3]; // officesArray equals the names of the office and info about that office for each level of elected government and its
         // console.log(officesArray);

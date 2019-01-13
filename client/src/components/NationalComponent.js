@@ -50,9 +50,9 @@ class Nationals extends Component {
         officesArray.forEach(office => {
           if (office.divisionId === newResults[3][0].divisionId) {
             //   console.log(office.name);
-            //   console.log(office.officialIndices);
+            console.log(office.officialIndices);
             office.officialIndices.forEach(index => {
-              // console.log(personInfoArray[index]);
+              console.log(personInfoArray[index]);
               let personInfo = personInfoArray[index];
               //   console.log("hi");
               //   console.log(personInfoArray[index].channels);
