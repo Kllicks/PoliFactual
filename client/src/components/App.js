@@ -89,51 +89,6 @@ class App extends Component {
               <NavbarBrand>
                 <strong className="white-text">Polifactual</strong>
               </NavbarBrand>
-<<<<<<< HEAD
-              <NavbarToggler
-              onClick={this.toggleCollapse}
-              />
-              <Collapse
-              id="navbarCollapse3"
-              isOpen={this.state.isOpen}
-              navbar
-              >
-            <NavbarNav left>
-              <NavItem active>
-              <NavLink to="/">Home</NavLink>
-              </NavItem>
-              <NavItem active>
-              <NavLink to="/Github">Github</NavLink>
-              </NavItem>
-              <NavItem active>
-              <NavLink to="/Trello">Trello</NavLink>
-              </NavItem>
-              <NavItem active>
-              <NavLink to="/Team">Meet The Team</NavLink>
-              </NavItem>
-              <NavItem>
-              <Dropdown>
-                  <DropdownToggle nav caret>
-                  <div className="d-none d-md-inline">Profile</div>
-                  </DropdownToggle>
-                  <DropdownMenu right>
-                  <DropdownItem href="/Local">Local</DropdownItem>
-                  <DropdownItem href="/State">State</DropdownItem>
-                  <DropdownItem href="/National">National</DropdownItem>
-                  </DropdownMenu>
-              </Dropdown>
-              </NavItem>
-              </NavbarNav>
-              <NavbarNav right>
-                {
-                  this.state.isLoggedIn ? <LogoutButton clickLogout={this.clickLogout} /> : <Link to="/Register"><MDBBtn floating color="indigo darken-4" onClick={this.clickLogin}>Register</MDBBtn></Link>
-                }
-
-              </NavbarNav>
-             
-             
-              
-=======
               <NavbarToggler onClick={this.toggleCollapse} />
               <Collapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
                 <NavbarNav left>
@@ -194,7 +149,6 @@ class App extends Component {
                     </div>
                   )}
                 </NavbarNav>
->>>>>>> staging
               </Collapse>
             </Navbar>
 

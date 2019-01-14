@@ -1,6 +1,8 @@
 import React from "react";
 import {  MDBRow, MDBCol, MDBCard, MDBIcon, MDBBtn  } from "mdbreact";
 
+import Styles from '../styles/Github.css';
+
 const Github = () => {
   return (
     <div>
@@ -14,7 +16,7 @@ const Github = () => {
                   "url(https://mdbootstrap.com/img/Photos/Others/img%20%2832%29.jpg)"
               }}
             >
-              <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 rounded">
+              <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                 <div>
                   <h2 className="purple-text py-3 font-weight-bold">
                     <MDBIcon icon="github" size="lg" />
@@ -22,10 +24,9 @@ const Github = () => {
                     <strong>Project Github</strong>
                   </h2>
                   <p className="pb-3">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Repellat fugiat, laboriosam, voluptatem, optio vero odio
-                    nam sit officia accusamus minus error nisi architecto
-                    nulla ipsum dignissimos. Odit sed qui, dolorum!
+                    Our group decided to use Github to make it easy to collaborate and look back at previous versions of our work. 
+                    Please check out this projects repo on Github!
+                    Dont forget to also check out our Trello Board! 
                   </p>
                   <MDBBtn color="secondary" rounded size="md">
                     <MDBIcon icon="clone" className="left" /> See Github for Project
