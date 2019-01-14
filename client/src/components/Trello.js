@@ -19,20 +19,17 @@ const Trello = () => {
                 /> 
               </MDBView>
               <MDBCardBody cascade className="text-center">
-                <h2 className="font-weight-bold">
+                <h1 className="font-weight-bold my-5">
                   Trello
-                </h2>
-                <p>
-                  Check out our Trello page!
-                </p>
+                </h1>
                 <MDBBtn className="btn-fb waves-light" color="indigo darken-4">
                   <MDBIcon icon="trello" />
-                  <a href="https://trello.com/b/pipJjSew/capstone-project"><p className="white-text">Trello</p></a>
+                  <a href="https://trello.com/b/pipJjSew/capstone-project"><p className="white-text">Click here to check out our Trello page!</p></a>
                 </MDBBtn>
               </MDBCardBody>
             </MDBCard>
             <MDBContainer className="mt-5">
-              <p>
+              <p className="grey-text">
                 Our team chose to use Trello as our choice of project planning software. We chose to use Trello to manage our web project for two reasons. It is free and helps keep us organized and focused. 
               </p>
             </MDBContainer>
