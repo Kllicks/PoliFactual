@@ -57,6 +57,10 @@ class App extends Component {
     };
   };
 
+  toggleCollapse = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  }
+
   doLoggedIn = () => {
     this.setState({ isLoggedIn: true });
   };
