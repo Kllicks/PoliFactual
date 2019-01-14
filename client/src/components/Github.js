@@ -21,15 +21,15 @@ const Github = () => {
                   <h2 className="purple-text py-3 font-weight-bold">
                     <MDBIcon icon="github" size="lg" />
                     <br />
-                    <strong>Project Github</strong>
+                    <strong>Github</strong>
                   </h2>
                   <p className="pb-3">
                     Our group decided to use Github to make it easy to collaborate and look back at previous versions of our work. 
                     Please check out this projects repo on Github!
                     Dont forget to also check out our Trello Board! 
                   </p>
-                  <MDBBtn color="secondary" rounded size="md">
-                    <MDBIcon icon="clone" className="left" /> See Github for Project
+                  <MDBBtn color="secondary" rounded size="md" href="https://github.com/Kllicks/Polifactual">
+                    <MDBIcon icon="clone" className="left"/>  See Github for Project
                   </MDBBtn>
                 </div>
               </div>
