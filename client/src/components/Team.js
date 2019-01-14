@@ -92,7 +92,7 @@ class Team extends React.Component {
                 <h5 className="font-weight-bold mt-4 mb-3">Isaac Fonseca</h5>
                 <p className="text-uppercase blue-text">Software Engineer</p>
                 <p className="grey-text">
-                  Exercise Physiologist turned Full- Stack Software Engineer, with a passion for competive video gaming and soccer. 
+                  Exercise Physiologist turned Full- Stack Software Engineer, with a passion for competitive video gaming and soccer. 
                 </p>
                 <ul className="list-unstyled mb-0">
                 <a href="mailto:isaacfo1010@gmail.com" className="p-2 fa-lg">
