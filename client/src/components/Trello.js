@@ -2,20 +2,22 @@ import React, { Component } from "react";
 
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBMask, MDBIcon, MDBView, MDBBtn } from "mdbreact";
 
+import Trellopic from '../styles/images/Trello.png';
+import Styles from '../styles/Trello.css';
+
 const Trello = () => {
   return (
-    <MDBCard className="my-5 px-5 pb-5">
-      <MDBCardBody>
+
+    <MDBCard className="my-5 px-5 pt-5 pb-5 indigo darken-4">
+      <MDBCardBody className="white">
         <MDBRow>
           <MDBCol md="12">
-            <MDBCard reverse>
+            <MDBCard>
               <MDBView hover cascade waves>
                 <img
-                  src= "../styles/images/Trello-min.png"
-                  alt=""
+                  src= {Trellopic}
                   className="img-fluid"
                 /> 
-                <MDBMask overlay="white-slight" className="waves-light" />
               </MDBView>
               <MDBCardBody cascade className="text-center">
                 <h2 className="font-weight-bold">
@@ -25,8 +27,8 @@ const Trello = () => {
                   Check out our Trello page!
                 </p>
                 <MDBBtn className="btn-fb waves-light" color="indigo darken-4">
-                  <MDBIcon icon="trello" className="" />
-                  <a href="https://trello.com/b/pipJjSew/capstone-project">Trello</a>
+                  <MDBIcon icon="trello" />
+                  <a href="https://trello.com/b/pipJjSew/capstone-project"><p className="white-text">Trello</p></a>
                 </MDBBtn>
               </MDBCardBody>
             </MDBCard>
