@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import {  MDBRow, MDBCol, MDBCard, MDBAvatar, MDBCardBody, MDBIcon } from "mdbreact";
+import {  MDBContainer, MDBRow, MDBCol, MDBCard, MDBAvatar, MDBCardBody, MDBIcon } from "mdbreact";
 
 import styles from '../styles/Team.css';
 
@@ -15,7 +15,9 @@ import isaac from '../styles/images/isaac.png';
 class Team extends React.Component {
     render() {
       return (
-        <MDBCard className="my-5 px-5 pb-5 text-center">
+        <MDBContainer>
+        <MDBCard className="my-5 px-5 pt-5 pb-5 white text-center">
+        <MDBCard>
           <MDBCardBody>
             <h2 className="h1-responsive font-weight-bold my-5">
               Our amazing team
@@ -108,7 +110,9 @@ class Team extends React.Component {
               </MDBCol>
             </MDBRow>
           </MDBCardBody>
+          </MDBCard>
         </MDBCard>
+        </MDBContainer>
   );
 }
 }

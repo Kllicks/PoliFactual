@@ -1,12 +1,13 @@
 import React from "react";
-import {  MDBRow, MDBCol, MDBCard, MDBIcon, MDBBtn  } from "mdbreact";
+import {  MDBContainer, MDBRow, MDBCol, MDBCard, MDBIcon, MDBBtn  } from "mdbreact";
 
 import Styles from '../styles/Github.css';
 
 const Github = () => {
   return (
-    <div>
-      <section className="text-center my-5 px-5 pt-5 pb-5">
+    <MDBContainer>
+      <MDBCard className="my-5 px-5 pt-5 pb-5 white text-center">
+      {/* <section className="text-center my-5 px-5 pt-5 pb-5"> */}
         <MDBRow>
           <MDBCol md="12" className="mb-4">
             <MDBCard
@@ -15,7 +16,6 @@ const Github = () => {
               //   backgroundImage:
               //     "url(https://mdbootstrap.com/img/Photos/Others/img%20%2832%29.jpg)"
               // }}
-
             >
               <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 white">
                 <div>
@@ -37,8 +37,9 @@ const Github = () => {
             </MDBCard>
           </MDBCol>
         </MDBRow>
-      </section>
-    </div>
+      {/* </section> */}
+      </MDBCard>
+      </MDBContainer>
   );
 }
 
