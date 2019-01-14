@@ -31,63 +31,102 @@ class Nationals extends Component {
 
     const addressUrl = encodeURI(`${streetaddress} ${zipcode}`);
     console.log(addressUrl);
-
+    let johnnyIsakson = "1721";
     fetch(
-      `https://www.googleapis.com/civicinfo/v2/representatives?address=${addressUrl}&includeOffices=true&key=AIzaSyB3cRW6zO8D3INc-NHDFA-0ck77gQAYpOU`,
+      `https://cors-anywhere.herokuapp.com/https://api.votesmart.org/CandidateBio.getDetailedBio?key=98ce96b89deef38a3071406d46b40cdf&o=JSON&candidateId=${johnnyIsakson}`,
       { headers: { "Content-Type": "application/json; charset=utf-8" } }
     )
       .then(response => response.json())
       .then(results => {
         // console.log(Object.values(results[3]));
         let newResults = Object.values(results); // newResults will be json response array of the users civic representives at each elected level of government.
-        let officesArray = newResults[3]; // officesArray equals the names of the office and info about that office for each level of elected government and its
-        console.log(newResults[3]);
-        console.log(newResults[4]);
-        let personInfoArray = newResults[4]; // personInfoArray is the names and info for the person who currently has been elected to the seat of the newResults array.
+        // let officesArray = newResults[3]; // officesArray equals the names of the office and info about that office for each level of elected government and its
+        console.log(newResults);
+        let candidateResults = newResults[0].candidate;
+        let officeInfoResults = newResults[0].office;
+        console.log(candidateResults);
+        // let birthDate = candidateResults.birthDate || null;
+        // let birthPlace = candidateResults.birthPlace || null;
+        let fullName =
+          candidateResults.preferredName + " " + candidateResults.lastName;
+        let ProfessionArray = candidateResults.profession.experience;
+        console.log(ProfessionArray);
+        let jobsArray = [];
+        ProfessionArray.forEach(element => {
+          let titles = element.title;
+          let organizations = element.organization;
+          let professionYear = element.span;
+          console.log(titles);
+          console.log(organizations);
+          console.log(professionYear);
+        });
+        // let firstElected = officeInfoResults.firstElect;
+        // let photo = candidateResults.photo;
+        console.log(officeInfoResults.parties);
+        // console.log(birthDate + " " + birthPlace + fullName);
+        // console.log(newResults[4]);
+        // let personInfoArray = newResults[4]; // personInfoArray is the names and info for the person who currently has been elected to the seat of the newResults array.
         let masterArray = [];
+        let personOfficeInfo = {
+          officeName: officeInfoResults.name[0],
+          firstElected: officeInfoResults.firstElect,
+          personName: fullName,
+          gender: candidateResults.gender,
+          birthDate: candidateResults.birthDate,
+          birthPlace: candidateResults.birthPlace,
+          collegeName: candidateResults.education.institution.school,
+          graduationDate: candidateResults.education.institution.span,
+          // address: candidateResults.address[0],
+          party: officeInfoResults.parties,
+          // phoneNumber: candidateResults.phones[0],
+          // twitter: TwitterHandle,
+          // email: personEmail,
+          photo: candidateResults.photo
+          // url: personUrl
+        };
+        masterArray.push(personOfficeInfo);
         // console.log(newResults[3][0].divisionId);
 
-        officesArray.forEach(office => {
-          if (office.divisionId === newResults[3][0].divisionId) {
-            //   console.log(office.name);
-            console.log(office.officialIndices);
-            office.officialIndices.forEach(index => {
-              console.log(personInfoArray[index]);
-              let personInfo = personInfoArray[index];
-              //   console.log("hi");
-              //   console.log(personInfoArray[index].channels);
-              let TwitterHandle;
-              let personEmail = personInfo.emails || null; // if an elected official has an email address add that value to personEmail.
-              let personPhoto = personInfo.photoUrl || null; //if an elected official has a photo url add that value to personPhoto
-              let personUrl = personInfo.urls || null; // if an elected official has a website (personal or for the department) add that value to personUrl
-              if (personInfoArray[index].channels) {
-                // console.log("fart machine");
-                personInfo.channels.forEach(index2 => {
-                  if (index2.type === "Twitter") {
-                    // console.log("hey buddy!");
-                    // console.log(index2.id);
-                    let theirTwitterHandle = index2.id;
-                    TwitterHandle = theirTwitterHandle;
-                    return TwitterHandle;
-                  }
-                });
-              }
-              console.log(TwitterHandle);
-              let personOfficeInfo = {
-                officeName: office.name,
-                personName: personInfo.name,
-                address: personInfo.address[0],
-                party: personInfo.party,
-                phoneNumber: personInfo.phones[0],
-                twitter: TwitterHandle,
-                email: personEmail,
-                photo: personPhoto,
-                url: personUrl
-              };
-              masterArray.push(personOfficeInfo);
-            });
-          }
-        });
+        // officesArray.forEach(office => {
+        //   if (office.divisionId === newResults[3][0].divisionId) {
+        //     //   console.log(office.name);
+        //     console.log(office.officialIndices);
+        //     office.officialIndices.forEach(index => {
+        //       console.log(bioResultsArray[index]);
+        //       let personInfo = personInfoArray[index];
+        //       //   console.log("hi");
+        //       //   console.log(personInfoArray[index].channels);
+        //       let TwitterHandle;
+        //       let personEmail = personInfo.emails || null; // if an elected official has an email address add that value to personEmail.
+        //       let personPhoto = personInfo.photoUrl || null; //if an elected official has a photo url add that value to personPhoto
+        //       let personUrl = personInfo.urls || null; // if an elected official has a website (personal or for the department) add that value to personUrl
+        //       if (personInfoArray[index].channels) {
+        //         // console.log("fart machine");
+        //         personInfo.channels.forEach(index2 => {
+        //           if (index2.type === "Twitter") {
+        //             // console.log("hey buddy!");
+        //             // console.log(index2.id);
+        //             let theirTwitterHandle = index2.id;
+        //             TwitterHandle = theirTwitterHandle;
+        //             return TwitterHandle;
+        //           }
+        //         });
+        //       }
+        //       console.log(TwitterHandle);
+        //       let personOfficeInfo = {
+        //         officeName: office.name,
+        //         personName: personInfo.name,
+        //         address: personInfo.address[0],
+        //         party: personInfo.party,
+        //         phoneNumber: personInfo.phones[0],
+        //         twitter: TwitterHandle,
+        //         email: personEmail,
+        //         photo: personPhoto,
+        //         url: personUrl
+        //       };
+        //     });
+        //   }
+        // });
 
         this.setState({
           personOfficeInfo: masterArray
@@ -134,16 +173,38 @@ class Nationals extends Component {
                       <br />
                       {item.officeName ? <>{item.officeName}</> : null}
                       <br />
+                      {item.party ? <>{item.party}</> : null}
+                      <br />
+                      {item.firstElected ? (
+                        <>First elected on {item.firstElected}.</>
+                      ) : null}
+                      <br />
+                      {item.birthDate ? (
+                        <>
+                          {item.personName} was born on {item.birthDate} in{" "}
+                          {item.birthPlace}.
+                        </>
+                      ) : null}
+                      <br />
+                      {item.gender === "Male" ? <>He </> : <>She </>}
+                      {item.graduationDate ? (
+                        <>
+                          graduated from {item.collegeName} in{" "}
+                          {item.graduationDate}.
+                        </>
+                      ) : null}
+
+                      <br />
                     </CardTitle>
                     <CardText>
-                      {item.address.line1 ? <>{item.address.line1}</> : null}
+                      {/* {item.address.line1 ? <>{item.address.line1}</> : null}
                       {item.address.line2 ? <>{item.address.line2}</> : null}
                       {item.address.city ? <>{item.address.city}</> : null}
                       {item.address.state ? <>{item.address.state}</> : null}
                       {item.address.zip ? <>{item.address.zip}</> : null}
                       {item.party ? <>{item.party}</> : null}
                       {item.phoneNumber ? <>{item.phoneNumber}</> : null}
-                      {/* {item.url ? <a href={item.url}>{item.url}</a> : null} */}
+                      {item.url ? <a href={item.url}>{item.url}</a> : null}
                       {item.twitter ? (
                         <>
                           <Timeline
@@ -159,7 +220,7 @@ class Nationals extends Component {
                             onLoad={() => console.log("Timeline is loaded!")}
                           />
                         </>
-                      ) : null}
+                      ) : null}{" "} */}
                     </CardText>
                   </li>
                   <MDBContainer>

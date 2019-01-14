@@ -23,57 +23,6 @@ class Locals extends Component {
   }
 
   componentDidMount() {
-    const SmartyStreetsCore = SmartyStreetsSDK.core;
-    const Lookup = SmartyStreetsSDK.usStreet.Lookup;
-
-    // Add your credentials to a credentials object.
-    let authId = "1fd6e124-8f73-dd6c-7b39-627a38395714";
-    let authToken = "3256298607229877";
-    let credentials = new SmartyStreetsCore.StaticCredentials(
-      authId,
-      authToken
-    );
-    let clientBuilder = new SmartyStreetsCore.ClientBuilder(credentials);
-    let client = clientBuilder.buildUsStreetApiClient();
-
-    let streetaddress = sessionStorage.getItem("streetaddress");
-    console.log(streetaddress);
-    let zipcode = sessionStorage.getItem("zipcode");
-    console.log(zipcode);
-    let lookup1 = new Lookup();
-    lookup1.street = streetaddress;
-    lookup1.zipCode = zipcode;
-    lookup1.state = "ga";
-    lookup1.city = "decatur";
-    console.log(lookup1.result);
-
-    client
-      .send(lookup1)
-      .then(handleSuccess)
-      .catch(handleError);
-    function handleSuccess(response) {
-      let zip9;
-      // Log the lookup results to the console.
-      response.lookups.map(lookup => {
-        console.log(
-          lookup.result[0].components.zipCode +
-            lookup.result[0].components.plus4Code
-        );
-        zip9.push(
-          lookup.result[0].components.zipCode +
-            lookup.result[0].components.plus4Code
-        );
-      });
-      return zip9;
-    }
-    // console.log(zip9);
-
-    function handleError(response) {
-      // console.log(response[0]);
-    }
-    let myZipCode = 30032;
-    let postZip = 3311;
-
     // const addressUrl = encodeURIComponent(`${streetaddress} ${zipcode}`);
     // console.log(addressUrl);
 
@@ -103,6 +52,55 @@ class Locals extends Component {
     //     combinedData["apiRequest3"] = values[2];
     //     return combinedData;
     //   })
+    const SmartyStreetsCore = SmartyStreetsSDK.core;
+    const Lookup = SmartyStreetsSDK.usStreet.Lookup;
+
+    let authId = "1fd6e124-8f73-dd6c-7b39-627a38395714";
+    let authToken = "3256298607229877";
+    let credentials = new SmartyStreetsCore.StaticCredentials(
+      authId,
+      authToken
+    );
+    let clientBuilder = new SmartyStreetsCore.ClientBuilder(credentials);
+    let client = clientBuilder.buildUsStreetApiClient();
+
+    let streetaddress = sessionStorage.getItem("streetaddress");
+    // console.log(streetaddress);
+    let zipcode = sessionStorage.getItem("zipcode");
+    // console.log(zipcode);
+    let lookup1 = new Lookup();
+    lookup1.street = streetaddress;
+    lookup1.zipCode = zipcode;
+    lookup1.state = "ga";
+    lookup1.city = "decatur";
+    // console.log(lookup1.result);
+
+    client
+      .send(lookup1)
+      .then(response => {
+        return handleSuccess(response);
+      })
+      .catch(error => {
+        handleError(error);
+      });
+    let zip9 = [];
+    function handleSuccess(response) {
+      // Log the lookup results to the console.
+      zip9 = response.lookups.map(lookup => {
+        return (
+          lookup.result[0].components.zipCode +
+          lookup.result[0].components.plus4Code
+        );
+      });
+    }
+    // console.log(zip9);
+    // console.log(zip9);
+
+    function handleError(response) {
+      // console.log(response[0]);
+    }
+    let myZipCode = 30032;
+    let postZip = 3311;
 
     let johnnyIsakson = "1721";
     let gpa =
@@ -116,76 +114,102 @@ class Locals extends Component {
       .then(results => {
         let newResults = Object.values(results); // newResults is the json response array of the users civic representives at each elected level of government.
         // let otherResults = Object.values(combinedData.apiRequest2); // otherResults will be json response array of the users civic representives at each elected level of government.
-        console.log(newResults[0].candidate);
+        // console.log(newResults[0].candidate);
         let candidateArray = newResults[0].candidate;
-        console.log(candidateArray);
+        // console.log(candidateArray);
         let candidateIdArray = [];
         candidateArray.forEach(id => {
-          console.log("hi");
-          console.log(id.candidateId);
-          let candidateValueArray = candidateIdArray.candidateId;
-          console.log(candidateIdArray);
-          console.log(candidateValueArray);
+          // console.log("hi");
+          // console.log(id.candidateId);
+          // let candidateValueArray = candidateIdArray.candidateId;
+          // console.log(candidateIdArray);
+          // console.log(candidateValueArray);
           let localCandidateIdArray = {
             id: id.candidateId
           };
           candidateIdArray.push(localCandidateIdArray);
+          // console.log(candidateIdArray);
         });
-
-        // console.log(otherResults);
-        // let officesArray = newResults[3]; // officesArray equals the names of the office and info about that office for each level of elected government and its
-        // console.log(officesArray);
-        // console.log(officesArray[0].divisionId);
-        // console.log("hi");
-        // console.log(newResults[4]);
-        // let personInfoArray = newResults[4]; // personInfoArray is the names and info for the person who currently has been elected to the seat of the newResults array.
-        // let masterArray = [];
-        // // console.log(newResults[3][newResults[3].length - 1].divisionId);
-        // for (let i = 3; i < officesArray.length; i++) {
-        //   let office = officesArray[i];
-        //   office.officialIndices.forEach(index => {
-        //     // console.log(personInfoArray[index]);
-        //     console.log("what is happening?!?!");
-        //     let personInfo = personInfoArray[index];
-        //     let TwitterHandle;
-        //     // console.log(personInfo.address);
-        //     let personEmail = personInfo.emails || null; // if an elected official has an email address add that value to personEmail.
-        //     let personPhoto = personInfo.photoUrl || null; //if an elected official has a photo url add that value to personPhoto
-        //     let personUrl = personInfo.urls || null; // if an elected official has a website (personal or for the department) add that value to personUrl
-        //     console.log(personInfo);
-        //     console.log(personUrl);
-        //     // if (personInfo.address) {
-        //     if (personInfoArray[index].channels) {
-        //       // console.log("fart machine");
-        //       personInfo.channels.forEach(index2 => {
-        //         if (index2.type === "Twitter") {
-        //           // console.log("hey buddy!");
-        //           // console.log(index2.id);
-        //           let theirTwitterHandle = index2.id;
-        //           TwitterHandle = theirTwitterHandle;
-        //           return TwitterHandle;
-        //         }
-        //       });
-        //       let personOfficeInfo = {
-        //         officeName: office.name,
-        //         personName: personInfo.name,
-        //         address: personInfo.address[0] || undefined,
-        //         party: personInfo.party,
-        //         phoneNumber: personInfo.phones[0],
-        //         twitter: TwitterHandle,
-        //         email: personEmail,
-        //         photo: personPhoto,
-        //         url: personUrl
-        //       };
-        //       masterArray.push(personOfficeInfo);
-        //     }
-        //   });
-        // }
-        // this.setState({
-        //   personOfficeInfo: masterArray
-        // });
+        return candidateIdArray;
       })
-      .catch(function(error) {
+      .then(candidateIdArray => {
+        let superFreshCanidids = candidateIdArray.map(index => {
+          // console.log(index.id);
+          // let candidateBioArray = [];
+          // candidateBioArray.push(index);
+          // console.log(candidateBioArray);
+          fetch(
+            `https://cors-anywhere.herokuapp.com/https://api.votesmart.org/CandidateBio.getDetailedBio?key=98ce96b89deef38a3071406d46b40cdf&o=JSON&candidateId=${
+              index.id
+            }`,
+            {
+              headers: { "Content-Type": "application/json; charset=utf-8" }
+            }
+          )
+            .then(response => response.json())
+            .then(results => {
+              // let bioResults = Object.values(results);
+              console.log(results);
+              return results;
+            });
+        });
+        console.log(superFreshCanidids);
+      })
+
+      //   // console.log(otherResults);
+      //   // let officesArray = newResults[3]; // officesArray equals the names of the office and info about that office for each level of elected government and its
+      //   // console.log(officesArray);
+      //   // console.log(officesArray[0].divisionId);
+      //   // console.log("hi");
+      //   // console.log(newResults[4]);
+      //   // let personInfoArray = newResults[4]; // personInfoArray is the names and info for the person who currently has been elected to the seat of the newResults array.
+      //   // let masterArray = [];
+      //   // // console.log(newResults[3][newResults[3].length - 1].divisionId);
+      //   // for (let i = 3; i < officesArray.length; i++) {
+      //   //   let office = officesArray[i];
+      //   //   office.officialIndices.forEach(index => {
+      //   //     // console.log(personInfoArray[index]);
+      //   //     console.log("what is happening?!?!");
+      //   //     let personInfo = personInfoArray[index];
+      //   //     let TwitterHandle;
+      //   //     // console.log(personInfo.address);
+      //   //     let personEmail = personInfo.emails || null; // if an elected official has an email address add that value to personEmail.
+      //   //     let personPhoto = personInfo.photoUrl || null; //if an elected official has a photo url add that value to personPhoto
+      //   //     let personUrl = personInfo.urls || null; // if an elected official has a website (personal or for the department) add that value to personUrl
+      //   //     console.log(personInfo);
+      //   //     console.log(personUrl);
+      //   //     // if (personInfo.address) {
+      //   //     if (personInfoArray[index].channels) {
+      //   //       // console.log("fart machine");
+      //   //       personInfo.channels.forEach(index2 => {
+      //   //         if (index2.type === "Twitter") {
+      //   //           // console.log("hey buddy!");
+      //   //           // console.log(index2.id);
+      //   //           let theirTwitterHandle = index2.id;
+      //   //           TwitterHandle = theirTwitterHandle;
+      //   //           return TwitterHandle;
+      //   //         }
+      //   //       });
+      //   //       let personOfficeInfo = {
+      //   //         officeName: office.name,
+      //   //         personName: personInfo.name,
+      //   //         address: personInfo.address[0] || undefined,
+      //   //         party: personInfo.party,
+      //   //         phoneNumber: personInfo.phones[0],
+      //   //         twitter: TwitterHandle,
+      //   //         email: personEmail,
+      //   //         photo: personPhoto,
+      //   //         url: personUrl
+      //   //       };
+      //   //       masterArray.push(personOfficeInfo);
+      //   //     }
+      //   //   });
+      //   // }
+      //   // this.setState({
+      //   //   personOfficeInfo: masterArray
+      //   // });
+
+      .catch(error => {
         console.log("Looks like there was a problem: \n", error);
       });
   }
