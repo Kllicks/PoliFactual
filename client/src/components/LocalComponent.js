@@ -22,32 +22,45 @@ class Locals extends Component {
   }
 
   componentDidMount() {
-    let apiRequest1 = fetch(
-      "https://www.googleapis.com/civicinfo/v2/representatives?address=1554%20line%20st.%2030032&includeOffices=true&key=git",
+    // let apiRequest1 = fetch(
+    //   "https://www.googleapis.com/civicinfo/v2/representatives?address=1554%20line%20st.%2030032&includeOffices=true&key=git",
+    //   { headers: { "Content-Type": "application/json; charset=utf-8" } }
+    // ).then(response => response.json());
+
+    // let apiRequest2 = fetch(
+    //   "http://www.opensecrets.org/api/?method=getLegislators&id=NJ&",
+    //   {
+    //     headers: { apikey: "cd6516f049350cdb9ffc4264527af56e" }
+    //   }
+    // ).then(response => response.json());
+
+    // let combinedData = { apiRequest1: {}, apiRequest2: {} };
+
+    // Promise.all([apiRequest1, apiRequest2])
+    //   .then(function(values) {
+    //     combinedData["apiRequest1"] = values[0];
+    //     combinedData["apiRequest2"] = values[1];
+    //     return combinedData;
+    //   })
+
+    let streetaddress = sessionStorage.getItem("streetaddress");
+    console.log(streetaddress);
+    let zipcode = sessionStorage.getItem("zipcode");
+    console.log(zipcode);
+
+    const addressUrl = encodeURI(`${streetaddress} ${zipcode}`);
+    console.log(addressUrl);
+
+    fetch(
+      `https://www.googleapis.com/civicinfo/v2/representatives?address=${addressUrl}&includeOffices=true&key=AIzaSyB3cRW6zO8D3INc-NHDFA-0ck77gQAYpOU`,
       { headers: { "Content-Type": "application/json; charset=utf-8" } }
-    ).then(response => response.json());
-
-    let apiRequest2 = fetch(
-      "http://www.opensecrets.org/api/?method=getLegislators&id=NJ&",
-      {
-        headers: { apikey: "cd6516f049350cdb9ffc4264527af56e" }
-      }
-    ).then(response => response.json());
-
-    let combinedData = { apiRequest1: {}, apiRequest2: {} };
-
-    Promise.all([apiRequest1, apiRequest2])
-      .then(function(values) {
-        combinedData["apiRequest1"] = values[0];
-        combinedData["apiRequest2"] = values[1];
-        return combinedData;
-      })
-
-      .then(combinedData => {
-        let newResults = Object.values(combinedData.apiRequest1); // newResults is the json response array of the users civic representives at each elected level of government.
-        let otherResults = Object.values(combinedData.apiRequest2); // otherResults will be json response array of the users civic representives at each elected level of government.
+    )
+      .then(response => response.json())
+      .then(results => {
+        let newResults = Object.values(results); // newResults is the json response array of the users civic representives at each elected level of government.
+        // let otherResults = Object.values(combinedData.apiRequest2); // otherResults will be json response array of the users civic representives at each elected level of government.
         console.log(newResults);
-        console.log(otherResults);
+        // console.log(otherResults);
         let officesArray = newResults[3]; // officesArray equals the names of the office and info about that office for each level of elected government and its
         console.log(officesArray);
         console.log(officesArray[0].divisionId);
@@ -61,6 +74,7 @@ class Locals extends Component {
           let office = officesArray[i];
           office.officialIndices.forEach(index => {
             // console.log(personInfoArray[index]);
+            console.log("what is happening?!?!");
             let personInfo = personInfoArray[index];
             let TwitterHandle;
             // console.log(personInfo.address);
@@ -69,20 +83,19 @@ class Locals extends Component {
             let personUrl = personInfo.urls || null; // if an elected official has a website (personal or for the department) add that value to personUrl
             console.log(personInfo);
             console.log(personUrl);
-            if (personInfo.address) {
-              if (personInfoArray[index].channels) {
-                // console.log("fart machine");
-                personInfo.channels.forEach(index2 => {
-                  let TwitterHandle = personInfo.emails || null;
-                  if (index2.type === "Twitter") {
-                    // console.log("hey buddy!");
-                    // console.log(index2.id);
-                    let theirTwitterHandle = index2.id;
-                    TwitterHandle = theirTwitterHandle;
-                    return TwitterHandle;
-                  }
-                });
-              }
+            // if (personInfo.address) {
+            if (personInfoArray[index].channels) {
+              // console.log("fart machine");
+              personInfo.channels.forEach(index2 => {
+                if (index2.type === "Twitter") {
+                  // console.log("hey buddy!");
+                  // console.log(index2.id);
+                  let theirTwitterHandle = index2.id;
+                  TwitterHandle = theirTwitterHandle;
+                  return TwitterHandle;
+                }
+              });
+
               let personOfficeInfo = {
                 officeName: office.name,
                 personName: personInfo.name,

@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import '../styles/Register.css'
+import '../styles/Register.css';
+
+import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBMask, MDBRow, MDBCol, MDBIcon,
+    MDBBtn, MDBView, MDBContainer, MDBCard, MDBCardBody, MDBInput, MDBFormInline } from "mdbreact";
 
 
 class Register extends Component {
@@ -84,7 +87,6 @@ class Register extends Component {
 					sessionStorage.setItem('streetaddress', user.streetaddress);
 					sessionStorage.setItem('currentstate', user.currentstate);
 					sessionStorage.setItem('zipcode', user.zipcode);
-
 					// Get saved data from sessionStorage
 					let streetaddress = sessionStorage.getItem('streetaddress');
 					console.log(streetaddress);
@@ -92,8 +94,7 @@ class Register extends Component {
 					console.log(currentstate);
 					let zipcode = sessionStorage.getItem('zipcode');
                     console.log(zipcode);
-                    
-                    this.props.history.push('/local')
+                    this.props.history.push('/Local')
                 }
             })
             .catch(err => {
@@ -103,150 +104,109 @@ class Register extends Component {
 
     render() {
         return (
-            <div class="container-register">
-                <div class="title">
-                    <i class="material-icons lock"></i> Register
+          <MDBMask className="d-flex justify-content-center align-items-center gradient">
+            <MDBContainer className="main">
+            <MDBRow>
+                <div className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5 signuparea">
+                  <h1 className="h1-responsive font-weight-bold">
+                    Sign up right now!{" "}
+                  </h1>
+                  <hr className="hr-light" />
+                  <h6 className="mb-4">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Rem repellendus quasi fuga nesciunt dolorum nulla magnam
+                    veniam sapiente, fugiat! Commodi sequi non animi ea dolor
+                    molestiae, quisquam iste, maiores. Nulla.
+                  </h6>
+                  <MDBBtn outline color="white">
+                    Learn More
+                  </MDBBtn>
                 </div>
-
-                <form className="signup-form" onSubmit={this._handleSubmit}>
-                    <label>
-                        <div class="input">
-                            <div class="input-addon">
-                                <i class="material-icons">person</i>
-                            </div>
-                        </div>
-                        <input 
+                <MDBCol md="6" xl="5" className="mb-4">
+                  <MDBCard id="classic-card">
+                    <MDBCardBody className="z-depth-2 indigo-text sizing" >
+                    <form className="signup-form" onSubmit={this._handleSubmit}>
+                      <h3 className="text-center">
+                        <MDBIcon icon="user" /> Register:
+                      </h3>
+                      <hr className="hr-light" />
+                        <MDBInput left
                             id="name" 
-                            placeholder="Name" 
+                            label="Your name" 
+                            icon="user" 
                             type="text" 
                             name="name" 
-                            autocomplete="off"
-                            onChange={this._handleName}
-                            value={this.state.name}
-                        />
-                    </label>
-                    
-                    <br/>
-                    <div class="clearfix"></div>
-
-                    <label>
-                        <div class="input">
-                            <div class="input-addon">
-                                <i class="material-icons">face</i>
-                            </div>
-                        </div>
-                        <input 
+                            autocomplete="off" 
+                            onChange={this._handleName} 
+                            value={this.state.name} />
+                        <MDBInput 
                             id ="username" 
-                            placeholder="Username" 
+                            label="Username" 
+                            icon="user" 
                             type="text" 
                             name="username" 
-                            autocomplete="off"
-                            onChange={this._handleUsername}
-							value={this.state.username}
-                        />
-                    </label>
-                    
-                    <br/>
-                    <div class="clearfix"></div>
-                    
-                    <label>
-                        <div class="input">
-                            <div class="input-addon">
-                                <i class="material-icons">face</i>
-                            </div>
-                        </div>
-                        <input 
-                            id ="streetaddress" 
-                            placeholder="Street Address" 
-                            type="text" 
-                            name="streetaddress" 
-                            autocomplete="off"
-                            onChange={this._handleStreetAddress}
-							value={this.state.streetaddress}
-                        />
-                    </label>
-                    
-                    <br/>
-                    <div class="clearfix"></div>
-                    
-                    <label>
-                        <div class="input">
-                            <div class="input-addon">
-                                <i class="material-icons">face</i>
-                            </div>
-                        </div>
-                        <input 
-                            id ="currentstate" 
-                            placeholder="State" 
-                            type="text" 
-                            name="currentstate" 
-                            autocomplete="off"
-                            onChange={this._handleCurrentState}
-							value={this.state.currentstate}
-                        />
-                    </label>
-                    
-                    <br/>
-                    <div class="clearfix"></div>
-                    
-                    <label>
-                        <div class="input">
-                            <div class="input-addon">
-                                <i class="material-icons">face</i>
-                            </div>
-                        </div>
-                        <input 
-                            id ="zipcode" 
-                            placeholder="Zipcode" 
-                            type="text" 
-                            name="zipcode" 
-                            autocomplete="off"
-                            onChange={this._handleZipcode}
-							value={this.state.zipcode}
-                        />
-                    </label>
-                    
-                    <br/>
-                    <div class="clearfix"></div>
-
-                    <label>
-                        <div class="input">
-                            <div class="input-addon">
-                                <i class="material-icons">vpn_key</i>
-                            </div>
-                        </div>
-                        <input 
+                            autocomplete="off" 
+                            onChange={this._handleUsername} 
+                            value={this.state.username} />
+                        <MDBInput
                             id="password" 
-                            placeholder="Password" 
-                            type="password" 
+                            label="Your password"
+                            icon="lock"
+                            type="password"
                             name="password" 
                             autocomplete="off"
                             onChange={this._handlePassword}
 							value={this.state.password}
-                        />
-                    </label>
-                    
-                    <br/>
-                    <div class="clearfix"></div>
-                
-                    <div class="remember-me">
-                        <input type="checkbox"/>
-                        <span>I accept Terms of Service</span>
-                    </div>
-
-                    <input type="submit" value="Register"/>
-
-                </form>   
-            
-                <div class="privacy">
-                    <a href="#">Privacy Policy</a>
-                </div>
-
-                <div class="register">
-                    <span>Already have an account?</span>
-                    <Link to="/login">Log In Here</Link>
-                </div>
-            </div>
+                            />
+                        <MDBInput 
+                            id ="streetaddress" 
+                            label="Street Address" 
+                            icon="address-book"
+                            type="text" 
+                            name="streetaddress" 
+                            autocomplete="off"
+                            name="streetaddress" 
+                            onChange={this._handleStreetAddress}
+							value={this.state.streetaddress} />
+                        <MDBInput 
+                            id ="currentstate" 
+                            label="State" 
+                            icon="address-book" 
+                            type="text" 
+                            name="currentstate" 
+                            autocomplete="off"
+                            onChange={this._handleCurrentState}
+							value={this.state.currentstate}/>
+                        <MDBInput 
+                            id ="zipcode" 
+                            icon="address-book" 
+                            label="Zipcode" 
+                            type="text" 
+                            name="zipcode" 
+                            autocomplete="off"
+                            onChange={this._handleZipcode}
+							value={this.state.zipcode} />
+                        <div className="remember-me">
+                            <input type="checkbox"/>
+                            <span>I accept Terms of Service</span>
+                        </div>
+                        <div className="text-center mt-4 black-text">
+                            <MDBBtn color="indigo" type="submit">Register Now!</MDBBtn>
+                        </div>
+                        </form>
+                            <a href="#">Privacy Policy</a>
+                        <div className="register">
+                            <span>Already have an account?</span>
+                            <br />
+                            <Link to="/login">Log In Here</Link>
+                        </div>
+                    </MDBCardBody>
+                  </MDBCard>
+                </MDBCol>
+              </MDBRow>
+            </MDBContainer>
+          </MDBMask>
+       
         )
     }
 };

@@ -2,6 +2,16 @@ import React, { Component } from "react";
 
 import {  MDBRow, MDBCol, MDBCard, MDBAvatar, MDBCardBody, MDBIcon } from "mdbreact";
 
+import styles from '../styles/Team.css';
+
+import helen from '../styles/images/helen.png';
+import kyle from '../styles/images/kyle.png';
+import brien from '../styles/images/brien.png';
+import isaac from '../styles/images/isaac.png';
+
+
+
+
 class Team extends React.Component {
     render() {
       return (
@@ -15,12 +25,7 @@ class Team extends React.Component {
             </p>
             <MDBRow>
               <MDBCol lg="3" md="6" className="mb-lg-0 mb-5">
-                {/* <MDBAvatar
-                  tag="img"
-                  src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg"
-                  className="rounded-circle z-depth-1 img-fluid"
-                  alt="Sample avatar"
-                /> */}
+                <img src={helen} className="rounded-circle z-depth-1 img-fluid newphotosize" />
                 <h5 className="font-weight-bold mt-4 mb-3">Helen Harris</h5>
                 <p className="text-uppercase blue-text">Software Engineer</p>
                 <p className="grey-text">
@@ -41,12 +46,7 @@ class Team extends React.Component {
               </MDBCol>
 
               <MDBCol lg="3" md="6" className="mb-lg-0 mb-5">
-                {/* <MDBAvatar
-                  tag="img"
-                  src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg"
-                  className="rounded-circle z-depth-1 img-fluid"
-                  alt="Sample avatar"
-                /> */}
+              <img src={brien} className="rounded-circle z-depth-1 img-fluid" />
                 <h5 className="font-weight-bold mt-4 mb-3">Brien Mizell</h5>
                 <p className="text-uppercase blue-text">Software Engineer</p>
                 <p className="grey-text">
@@ -67,12 +67,7 @@ class Team extends React.Component {
               </MDBCol>
 
               <MDBCol lg="3" md="6" className="mb-lg-0 mb-5">
-                {/* <MDBAvatar
-                  tag="img"
-                  src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"
-                  className="rounded-circle z-depth-1 img-fluid"
-                  alt="Sample avatar"
-                /> */}
+              <img src={kyle} className="rounded-circle z-depth-1 img-fluid" />
                 <h5 className="font-weight-bold mt-4 mb-3">Kyle Sekellick</h5>
                 <p className="text-uppercase blue-text">Software Engineer</p>
                 <p className="grey-text">
@@ -93,12 +88,7 @@ class Team extends React.Component {
               </MDBCol>
 
               <MDBCol lg="3" md="6" className="mb-lg-0 mb-5">
-                {/* <MDBAvatar
-                  tag="img"
-                  src="https://mdbootstrap.com/img/Photos/Avatars/img%20(32).jpg"
-                  className="rounded-circle z-depth-1 img-fluid"
-                  alt="Sample avatar"
-                /> */}
+              <img src={isaac} className="rounded-circle z-depth-1 img-fluid" />
                 <h5 className="font-weight-bold mt-4 mb-3">Isaac Fonseca</h5>
                 <p className="text-uppercase blue-text">Software Engineer</p>
                 <p className="grey-text">

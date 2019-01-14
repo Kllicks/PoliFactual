@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Styles from '../styles/Home.css';
+
 import {
     BrowserRouter as Router,
     Route,
@@ -20,10 +22,10 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        {/* First Section */}
         <MDBContainer>
+        {/* First Section */}
           <MDBMask className="d-flex justify-content-center align-items-center gradient">
-              <MDBContainer>
+              <MDBContainer className="main">
                 <MDBRow>
                   <div className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5">
                     <h1 className="h1-responsive font-weight-bold mt-sm-5">
@@ -48,116 +50,11 @@ class Home extends React.Component {
                 </MDBRow>
               </MDBContainer>
             </MDBMask>
-
-
-
-
-
-
-
-          {/* <MDBMask className="d-flex justify-content-center align-items-center gradient">
-              <MDBRow>
-                <div className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5">
-                  <h1 className="h1-responsive font-weight-bold">
-                    Sign up right now!{" "}
-                  </h1>
-                  <hr className="hr-light" />
-                  <h6 className="mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Rem repellendus quasi fuga nesciunt dolorum nulla magnam
-                    veniam sapiente, fugiat! Commodi sequi non animi ea dolor
-                    molestiae, quisquam iste, maiores. Nulla.
-                  </h6>
-                  <MDBBtn outline color="white">
-                    Learn More
-                  </MDBBtn>
-                </div>
-                <MDBCol md="6" xl="5" className="mb-4">
-                  <MDBCard id="classic-card">
-                    <MDBCardBody className="z-depth-2 indigo-text">
-                      <h3 className="text-center ">
-                        <MDBIcon icon="user" /> Register:
-                      </h3>
-                      <hr className="hr-light" />
-                      <MDBInput icon="user" label="Your name" />
-                      <MDBInput icon="envelope" label="Your email" type="email" />
-                      <MDBInput icon="address-book" label="Zip Code"/>
-                      <div className="text-center mt-4">
-                        <MDBBtn color="indigo">Sign Up</MDBBtn>
-                        <hr className="hr-light" />
-                        <div className="text-center d-flex justify-content-center white-label">
-                          <a href="#!" className="p-2 m-2">
-                            <MDBIcon icon="twitter" className="indigo-text" />
-                          </a>
-                          <a href="#!" className="p-2 m-2">
-                            <MDBIcon icon="linkedin" className="indigo-text" />
-                          </a>
-                          <a href="#!" className="p-2 m-2">
-                            <MDBIcon icon="instagram" className="indigo-text" />
-                          </a>
-                        </div>
-                      </div>
-                    </MDBCardBody>
-                  </MDBCard>
-                </MDBCol>
-              </MDBRow>
-          </MDBMask> */}
         </MDBContainer>
-        {/*First Section */}
-           {/* <MDBView>
-            <MDBMask className="d-flex justify-content-center align-items-center gradient">
-           <MDBContainer>
-             <MDBRow>
-               <div className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5">
-                 <h1 className="h1-responsive font-weight-bold">
-                   Sign up right now!{" "}
-                 </h1>
-                 <hr className="hr-light" />
-                 <h6 className="mb-4">
-                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                   Rem repellendus quasi fuga nesciunt dolorum nulla magnam
-                   veniam sapiente, fugiat! Commodi sequi non animi ea dolor
-                   molestiae, quisquam iste, maiores. Nulla.
-                 </h6>
-                 <MDBBtn outline color="white">
-                   Learn More
-                 </MDBBtn>
-               </div>
-               <MDBCol md="6" xl="5" className="mb-4">
-                 <MDBCard id="classic-card">
-                   <MDBCardBody className="z-depth-2 indigo-text">
-                     <h3 className="text-center ">
-                       <MDBIcon icon="user" /> Register:
-                     </h3>
-                     <hr className="hr-light" />
-                     <MDBInput icon="user" label="Your name" />
-                     <MDBInput icon="envelope" label="Your email" type="email" />
-                     <MDBInput icon="address-book" label="Zip Code"/>
-                     <div className="text-center mt-4">
-                       <MDBBtn color="indigo">Sign Up</MDBBtn>
-                       <hr className="hr-light" />
-                       <div className="text-center d-flex justify-content-center white-label">
-                         <a href="#!" className="p-2 m-2">
-                           <MDBIcon icon="twitter" className="indigo-text" />
-                         </a>
-                         <a href="#!" className="p-2 m-2">
-                           <MDBIcon icon="linkedin" className="indigo-text" />
-                         </a>
-                         <a href="#!" className="p-2 m-2">
-                           <MDBIcon icon="instagram" className="indigo-text" />
-                         </a>
-                       </div>
-                     </div>
-                   </MDBCardBody>
-                 </MDBCard>
-               </MDBCol>
-             </MDBRow>
-           </MDBContainer>
-         </MDBMask>
-       </MDBView> */}
+
 
  {/* Second Section */}
- <MDBContainer>
+ <MDBContainer className="second">
  <section className="my-5">
          <h2 className="h1-responsive font-weight-bold text-center my-5">
            Why is it so great?
