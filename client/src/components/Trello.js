@@ -11,7 +11,7 @@ const Trello = () => {
             <MDBCard reverse>
               <MDBView hover cascade waves>
                 <img
-                  src="https://mdbootstrap.com/img/Photos/Slides/img%20(142).jpg"
+                  src= "../styles/images/Trello-min.png"
                   alt=""
                   className="img-fluid"
                 /> 
@@ -32,7 +32,7 @@ const Trello = () => {
             </MDBCard>
             <MDBContainer className="mt-5">
               <p>
-                Our team choose to use Trello as our choice of project planning software. We choose to use Trello to manage our web project for two reasons. It is free and helps keep us organized and focused. 
+                Our team chose to use Trello as our choice of project planning software. We chose to use Trello to manage our web project for two reasons. It is free and helps keep us organized and focused. 
               </p>
             </MDBContainer>
           </MDBCol>
