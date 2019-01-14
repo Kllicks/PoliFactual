@@ -29,8 +29,8 @@ class Team extends React.Component {
                 <h5 className="font-weight-bold mt-4 mb-3">Helen Harris</h5>
                 <p className="text-uppercase blue-text">Software Engineer</p>
                 <p className="grey-text">
-                  Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                  consectetur, adipisci sed quia non numquam modi tempora eius.
+                A creative and detailed individual, with the ability to develop effective and efficient 
+                solutions. 
                 </p>
                 <ul className="list-unstyled mb-0">
                 <a href="mailto:hchang0803@outlook.com" className="p-2 fa-lg">
