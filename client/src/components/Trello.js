@@ -8,8 +8,7 @@ import Styles from '../styles/Trello.css';
 const Trello = () => {
   return (
 
-    <MDBCard className="my-5 px-5 pt-5 pb-5 indigo darken-4">
-      <MDBCardBody className="white">
+    <MDBCard className="my-5 px-5 pt-5 pb-5 white">
         <MDBRow>
           <MDBCol md="12">
             <MDBCard>
@@ -39,7 +38,6 @@ const Trello = () => {
             </MDBContainer>
           </MDBCol>
         </MDBRow>
-      </MDBCardBody>
     </MDBCard>
   );
 }
