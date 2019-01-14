@@ -95,7 +95,7 @@ class App extends Component {
               <NavLink to="/Team">Meet The Team</NavLink>
               </NavItem>
               <NavItem>
-              {/* <Dropdown>
+              <Dropdown>
                   <DropdownToggle nav caret>
                   <div className="d-none d-md-inline">Profile</div>
                   </DropdownToggle>
@@ -104,7 +104,7 @@ class App extends Component {
                   <DropdownItem href="/State">State</DropdownItem>
                   <DropdownItem href="/National">National</DropdownItem>
                   </DropdownMenu>
-              </Dropdown> */}
+              </Dropdown>
               </NavItem>
               </NavbarNav>
               <NavbarNav right>
