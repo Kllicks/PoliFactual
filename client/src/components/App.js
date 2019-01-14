@@ -102,14 +102,20 @@ class App extends Component {
                   </NavItem>
                   <NavItem>
                     <Dropdown>
-                      <DropdownToggle nav caret>
-                        <div className="d-none d-md-inline">Profile</div>
-                      </DropdownToggle>
-                      <DropdownMenu right>
-                        <DropdownItem href="/Local">Local</DropdownItem>
-                        <DropdownItem href="/State">State</DropdownItem>
-                        <DropdownItem href="/National">National</DropdownItem>
-                      </DropdownMenu>
+                      {this.state.isLoggedIn ? (
+                        <>
+                          <DropdownToggle nav caret>
+                            <div className="d-none d-md-inline">Profile</div>
+                          </DropdownToggle>
+                          <DropdownMenu right>
+                            <DropdownItem href="/Local">Local</DropdownItem>
+                            <DropdownItem href="/State">State</DropdownItem>
+                            <DropdownItem href="/National">
+                              National
+                            </DropdownItem>
+                          </DropdownMenu>
+                        </>
+                      ) : null}
                     </Dropdown>
                   </NavItem>
                 </NavbarNav>
