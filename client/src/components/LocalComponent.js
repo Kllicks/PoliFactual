@@ -22,7 +22,7 @@ class Locals extends Component {
   }
 
   componentDidMount() {
-    let streetaddress = sessionStorage.getItem("streetaddress");
+    let streetaddress = sessionStorage.getItem("streetaddress"); // streetaddress equals the value that the useradded to the street address from the database
     let city = sessionStorage.getItem("city");
     let state = sessionStorage.getItem("currentstate");
     let zipcode = sessionStorage.getItem("zipcode");
@@ -47,20 +47,31 @@ class Locals extends Component {
         let councilKey = ""; // create a new variable councilKey as an empty sting to accept an upcoming assignment
         Object.keys(ocdArray).forEach(element => {
           // for each key in the ocd array make a new array with the value of that key under the following circumspances:
-          if (
-            (element.includes("county") || element.includes("city")) && // if the key includes the value "county" or the key includes the value "city"
-            !element.includes("council") // and the key does not inclyde "council"
-          ) {
-            countyKey = element; // add the value of the key to the countyKey variable.
-          }
+          // if (
+          //   (element.includes("county") || element.includes("city")) && // if the key includes the value "county" or the key includes the value "city"
+          //   !element.includes("council") // and the key does not inclyde "council"
+          // ) {
+          //   countyKey = element; // add the value of the key to the countyKey variable.
+          // }
+          console.log(element);
           if (element.includes("council")) {
             // if the key includes the value council...
             councilKey = element; // add the value of the key to the councilKey variable.
+          } else if (element.includes("county") || element.includes("city")) {
+            console.log("found a county or city");
+            countyKey = element; // add the value of the key to the countyKey variable.
           }
         });
+        console.log(councilKey);
+        console.log(countyKey);
+        console.log("those were the keysz");
 
-        let localOfficeName = ocdArray[councilKey].name; // this is the name of the office held by the key value that includes council from the above forEach/if statement.
-        let indicesArray = ocdArray[councilKey].officeIndices; // this array will hold the values of the officeIndices that has the value of councilKey from the ocdArray.
+        // let localOfficeName = ocdArray[councilKey].name; // this is the name of the office held by the key value that includes council from the above forEach/if statement.
+        let indicesArray = [];
+        if (councilKey) {
+          indicesArray = ocdArray[councilKey].officeIndices;
+        }
+        // this array will hold the values of the officeIndices that has the value of councilKey from the ocdArray.
         indicesArray = indicesArray.concat(ocdArray[countyKey].officeIndices); // combine each officeIndices in the indices array;
         let wonderfulData = indicesArray.map(index => {
           // create a variable wonderfulData that will map through each index of the indicesArray, then...
