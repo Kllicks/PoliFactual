@@ -142,6 +142,7 @@ class Register extends Component {
                         <MDBIcon icon="user" /> Register:
                       </h3>
                       <hr className="hr-light" />
+                      {/* Form */}
                         <MDBInput left
                             id="name" 
                             label="Your name" 
