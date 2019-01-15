@@ -27,7 +27,7 @@ class Home extends React.Component {
           <MDBMask className="d-flex justify-content-center align-items-center gradient">
               <MDBContainer className="main">
                 <MDBRow>
-                  <div className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5">
+                  <div className="black-text text-center text-md-left col-md-6 mt-xl-5 mb-5">
                     <h1 className="h1-responsive font-weight-bold mt-sm-5">
                       Polifactual{" "}
                     </h1>
@@ -35,10 +35,10 @@ class Home extends React.Component {
                     <h6 className="mb-4">
                       Bringing you your local, state, and national legislative representatives' information right to you from one source.
                     </h6>
-                    <MDBBtn color="white">Download</MDBBtn>
+                    {/* <MDBBtn color="white">Download</MDBBtn>
                     <MDBBtn outline color="white">
                       Learn More
-                    </MDBBtn>
+                    </MDBBtn> */}
                   </div>
                   <MDBCol md="6" xl="5" className="mt-xl-5">
                     <img
@@ -196,9 +196,9 @@ class Home extends React.Component {
                 <MDBIcon icon="magic" size="2x" className="deep-purple-text" />
               </MDBCol>
               <MDBCol size="10">
-                <h5 className="font-weight-bold mb-3">Magical</h5>
+                <h5 className="font-weight-bold mb-3">Mobile</h5>
                 <p className="grey-text">
-                  
+                  You can have access to Polifactual on the fly! No need to be on a desktop or laptop. Fully functional on any phone with a web browser.
                 </p>
               </MDBCol>
             </MDBRow>
