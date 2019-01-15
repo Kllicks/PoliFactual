@@ -34,7 +34,7 @@ class Home extends React.Component {
                     <h6 className="mb-4">
                       Bringing you your local, state, and national legislative representatives' information right to you from one source.
                     </h6>
-                    {/* <MDBBtn color="white">Register Now!</MDBBtn> */}
+                    <MDBBtn color="indigo darken-4">Register Now!</MDBBtn>
                     <MDBBtn outline color="white">
                       <strong>Learn More</strong>
                     </MDBBtn>

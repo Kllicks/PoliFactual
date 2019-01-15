@@ -89,6 +89,7 @@ class Login extends Component {
 				Welcome Back!{" "}
 			  </h1>
 			  <hr className="hr-light" />
+				<strong><p>We are happy to see you again!</p></strong>
 			</div>
 
 			<MDBCol md="6" xl="5" className="mb-4">

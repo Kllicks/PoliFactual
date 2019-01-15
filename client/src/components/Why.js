@@ -21,8 +21,8 @@ class Why extends React.Component {
     return (
       <div>
  <MDBContainer >
- <MDBCard className="second white">
- <section className="my-5">
+ <MDBCard className="my-5 px-5 pt-5 pb-5 white">
+ <MDBCard>
          <h2 className="h1-responsive font-weight-bold text-center my-5">
            Why is it so great?
          </h2>
@@ -74,7 +74,7 @@ class Why extends React.Component {
             </MDBRow>
           </MDBCol>
         </MDBRow>
-      </section>
+        </MDBCard>
       </MDBCard>
  </MDBContainer>
       </div>

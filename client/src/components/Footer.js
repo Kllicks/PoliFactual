@@ -48,7 +48,7 @@ import {
       <h5 className="title indigo darker-4">About</h5>
       <ul>
         <li className="list-unstyled">
-          <a href="#!">About Us</a>
+          <a href="#!">About Polifactual</a>
         </li>
         <li className="list-unstyled">
           <a href="#!">Careers</a>
