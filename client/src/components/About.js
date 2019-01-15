@@ -21,15 +21,14 @@ class About extends React.Component {
     return (
       <div>
       <MDBContainer>
-        <MDBCard className="my-5 white" >
-      <section>
+        <MDBCard className="my-5 px-5 pt-5 pb-5 white">
+        <MDBCard>
         <h2 className="h1-responsive font-weight-bold text-center my-5">
           What all can Polifactual do?
         </h2>
         <p className="lead grey-text w-responsive text-center mx-auto mb-5">
           Below you will see several points highlighting some of our features  
         </p>
-
         <MDBRow>
           <MDBCol md="4">
             <MDBRow className="mb-3">
@@ -107,13 +106,13 @@ class About extends React.Component {
               <MDBCol size="10">
                 <h5 className="font-weight-bold mb-3">Magical</h5>
                 <p className="grey-text">
-                  
+                fdajkfdjlfjal
                 </p>
               </MDBCol>
             </MDBRow>
           </MDBCol>
         </MDBRow>
-      </section>
+      </MDBCard>
       </MDBCard>
       </MDBContainer>
       </div>
