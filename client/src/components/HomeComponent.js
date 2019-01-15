@@ -13,7 +13,7 @@ import {
 import {
   MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBMask, MDBRow,
   MDBCol, MDBIcon,
-  MDBBtn, MDBView, MDBContainer, MDBCard, MDBCardBody, MDBInput, MDBFormInline
+  MDBBtn, MDBView, MDBContainer, MDBCard, MDBCardBody, MDBInput, MDBFormInline, NavLink
   } from "mdbreact";
 
 
@@ -34,9 +34,11 @@ class Home extends React.Component {
                     <h6 className="mb-4">
                       Bringing you your local, state, and national legislative representatives' information right to you from one source.
                     </h6>
-                    <MDBBtn color="indigo darken-4">Register Now!</MDBBtn>
+                    {/* <MDBBtn color="indigo darken-4">Register Now!</MDBBtn> */}
                     <MDBBtn outline color="white">
-                      <strong>Learn More</strong>
+                      <strong>
+                        <NavLink to="/About">Learn More</NavLink>
+                      </strong>
                     </MDBBtn>
                   </div>
                   <MDBCol md="6" xl="5" className="mt-xl-5">

@@ -104,9 +104,9 @@ class About extends React.Component {
                 <MDBIcon icon="magic" size="2x" className="deep-purple-text" />
               </MDBCol>
               <MDBCol size="10">
-                <h5 className="font-weight-bold mb-3">Magical</h5>
+                <h5 className="font-weight-bold mb-3">Mobile</h5>
                 <p className="grey-text">
-                fdajkfdjlfjal
+                Polifactual is on the go! Can be used on any mobile device with a web browser.
                 </p>
               </MDBCol>
             </MDBRow>
