@@ -172,7 +172,13 @@ class Locals extends Component {
                     <>
                       <img style={{ width: "13rem", height: "15rem" }} alt="" />
                     </>
-                  ) : null}
+                  ) : (
+                    <img
+                      style={{ width: "13rem", height: "15rem" }}
+                      src={"/images/NoPhotoAvailable.jpg"}
+                      alt=""
+                    />
+                  )}
 
                   <br />
                   {item.personName ? (

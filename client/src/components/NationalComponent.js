@@ -2,8 +2,13 @@ import { Timeline } from "react-twitter-widgets";
 import React, { Component } from "react";
 // import TwitterHandle from "./TwitterHandle";
 
-
-import { Carousel, CarouselInner, CarouselItem, Container, Row } from "mdbreact";
+import {
+  Carousel,
+  CarouselInner,
+  CarouselItem,
+  Container,
+  Row
+} from "mdbreact";
 
 import { MDBIcon, MDBContainer, MDBBtn, MDBRow, MDBCol } from "mdbreact";
 import {
@@ -107,8 +112,7 @@ class Nationals extends Component {
   render() {
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
       return (
-
-        <MDBContainer className="main d-flex flex-row"> 
+        <MDBContainer className="main d-flex flex-row">
           <Card style={{ width: "30rem" }} className="p-2">
             {/* <CardImage
               className="img-fluid"
@@ -119,10 +123,24 @@ class Nationals extends Component {
                 <CardTitle>
                   {item.photo ? (
                     <div>
-                      <img style={{width: '13rem', height: '15rem'}} src={item.photo} alt="" />
+                      <img
+                        style={{ width: "13rem", height: "15rem" }}
+                        src={item.photo}
+                        alt=""
+                      />
                     </div>
+                  ) : (
+                    <img
+                      style={{ width: "13rem", height: "15rem" }}
+                      src={"/images/NoPhotoAvailable.jpg"}
+                      alt=""
+                    />
+                  )}
+                  {item.personName ? (
+                    <>
+                      <a href={item.url}>{item.personName}</a>
+                    </>
                   ) : null}
-                  {item.personName ? <><a href={item.url}>{item.personName}</a></> : null}
                   <br />
                   {item.officeName ? <>{item.officeName}</> : null}
                   <br />
@@ -154,22 +172,25 @@ class Nationals extends Component {
                 </CardText>
               </li>
               <MDBContainer>
-              {item.email ? (
-                    <MDBBtn size="lg" tag="a" floating social="email" href={"mailto:" + item.email}>
+                {item.email ? (
+                  <MDBBtn
+                    size="lg"
+                    tag="a"
+                    floating
+                    social="email"
+                    href={"mailto:" + item.email}
+                  >
                     <MDBIcon icon="envelope" />
                   </MDBBtn>
-                  ) : null}
+                ) : null}
               </MDBContainer>
             </CardBody>
           </Card>
- 
-
         </MDBContainer>
       );
     });
 
     return (
-
       <div>
         <>{officeNames}</>
       </div>

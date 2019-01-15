@@ -45,29 +45,32 @@ class States extends Component {
         let masterArray = [];
         console.log(newResults[3][2].divisionId);
         officesArray.forEach(office => {
+          // for each office inside of the offices array.
           if (
-            office.divisionId === newResults[3][2].divisionId ||
+            office.divisionId === newResults[3][2].divisionId || // if office.divisionId equals the second or third index...
             office.divisionId === newResults[3][3].divisionId
           ) {
             //   console.log(office.name);
             //   console.log(office.officialIndices);
             office.officialIndices.forEach(index => {
+              // for each index of  the officialIndices array inside of  office...
               // console.log(personInfoArray[index]);
-              let personInfo = personInfoArray[index];
-              let TwitterHandle;
+              let personInfo = personInfoArray[index]; // set personInfo equal to each index of th personInfoArray.
+              let TwitterHandle; // establish a TwitterHandle variable to be assigned a value later.
               let personEmail = personInfo.emails || null; // if an elected official has an email address add that value to personEmail.
               let personPhoto = personInfo.photoUrl || null; //if an elected official has a photo url add that value to personPhoto
               let personUrl = personInfo.urls || null; // if an elected official has a website (personal or for the department) add that value to personUrl
 
               if (personInfoArray[index].channels) {
+                // check wether each index in the personInfoArray has a key named channels if they do...
                 // console.log("fart machine");
                 personInfo.channels.forEach(index2 => {
+                  // for each key name of the channels array of objects...
                   if (index2.type === "Twitter") {
-                    // console.log("hey buddy!");
-                    // console.log(index2.id);
-                    let theirTwitterHandle = index2.id;
-                    TwitterHandle = theirTwitterHandle;
-                    return TwitterHandle;
+                    // If the value of that key name is Twitter...
+                    let theirTwitterHandle = index2.id; // assign the key value of the Twitter key name to the variable theirTwitterHandle;
+                    TwitterHandle = theirTwitterHandle; // assing theirTwitterHandle to TwitterHandle;
+                    return TwitterHandle; // returnthe value of TwitterHandle so it can be used outside of the forEach.
                   }
                 });
               }
@@ -121,7 +124,13 @@ class States extends Component {
                         alt=""
                       />
                     </div>
-                  ) : null}
+                  ) : (
+                    <img
+                      style={{ width: "13rem", height: "15rem" }}
+                      src={"/images/NoPhotoAvailable.jpg"}
+                      alt=""
+                    />
+                  )}
                   {item.personName ? (
                     <>
                       <a href={item.url}>{item.personName}</a>
