@@ -26,7 +26,7 @@ import {
       </Col>
       <Col md="2">
       <h5 className="title indigo darker-4">Help</h5>
-      <ul>
+      <ul className="">
         <li className="list-unstyled">
           <a href="#!">Contact Us</a>
         </li>
