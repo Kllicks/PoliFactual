@@ -12,6 +12,9 @@ import Nationals from "./NationalComponent";
 import Team from "./Team";
 import Trello from "./Trello";
 import Github from "./Github";
+import About from "./About";
+import Why from "./Why";
+
 import LogoutButton from "./logoutButton";
 
 import axios from "axios";
@@ -96,6 +99,12 @@ class App extends Component {
                     <NavLink to="/">Home</NavLink>
                   </NavItem>
                   <NavItem active>
+                    <NavLink to="/About">About</NavLink>
+                  </NavItem>
+                  <NavItem active>
+                    <NavLink to="/Why">Why</NavLink>
+                  </NavItem>
+                  <NavItem active>
                     <NavLink to="/Github">Github</NavLink>
                   </NavItem>
                   <NavItem active>
@@ -175,6 +184,8 @@ class App extends Component {
                 return <Register doLoggedIn={this.doLoggedIn} {...props} />;
               }}
             />
+            <Route path="/About" component={About} />
+            <Route path="/Why" component={Why} />
             <Route path="/Github" component={Github} />
             <Route path="/Trello" component={Trello} />
             <Route path="/Team" component={Team} />
