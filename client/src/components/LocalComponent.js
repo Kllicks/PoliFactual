@@ -55,12 +55,12 @@ class Locals extends Component {
         });
 
         let localOfficeName = ocdArray[councilKey].name; // this is the name of the office held by the key value that includes council from the above forEach/if statement.
-        let indicesArray = ocdArray[councilKey].officeIndices; // this array will hold the values of the officeIndices that has the value of councilKey from the ocdArray
+        let indicesArray = ocdArray[councilKey].officeIndices; // this array will hold the values of the officeIndices that has the value of councilKey from the ocdArray.
         indicesArray = indicesArray.concat(ocdArray[countyKey].officeIndices); // combine each officeIndices in the indices array;
         let wonderfulData = indicesArray.map(index => {
           // create a variable wonderfulData that will map through each index of the indicesArray, then...
           let positionData = { positionName: officesArray[index].name }; // position data will equal the value of name of the corresponding index of the officesArray.
-          let positionIndices = officesArray[index].officialIndices; // positionIndices will equal the officalIndices value of the index of that officeArray
+          let positionIndices = officesArray[index].officialIndices; // positionIndices will equal the officalIndices value of the index of that officeArray.
           positionData.people = positionIndices.map(index2 => {
             // positionData.people will map through the values of positionIndices and then...
             return personInfoArray[index2]; //retun the corresponding index from the personInfoArray for each.
@@ -76,6 +76,7 @@ class Locals extends Component {
         //    positionName: which will have a key value equal to the name of the position.
         //
         /////////////////////////////////////////////////
+
         console.log(wonderfulData);
 
         let masterArray = []; //create a new array called masterarray. setting it as an empty array awaiting assignment.
