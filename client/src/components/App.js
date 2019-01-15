@@ -12,6 +12,9 @@ import Nationals from "./NationalComponent";
 import Team from "./Team";
 import Trello from "./Trello";
 import Github from "./Github";
+import About from "./About";
+import Why from "./Why";
+
 import LogoutButton from "./logoutButton";
 
 import axios from "axios";
@@ -28,9 +31,10 @@ import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  
 } from "mdbreact";
-import { MDBBtn } from "mdbreact";
+import { MDBBtn, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 
 import {
   BrowserRouter as Router,
@@ -87,42 +91,48 @@ class App extends Component {
           <>
             <Navbar color="transparent" dark expand="md">
               <NavbarBrand>
+                <h2>
                 <strong className="white-text">Polifactual</strong>
+                </h2>
               </NavbarBrand>
               <NavbarToggler onClick={this.toggleCollapse} />
               <Collapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
                 <NavbarNav left>
-                  <NavItem active>
+                  <NavItem >
                     <NavLink to="/">Home</NavLink>
                   </NavItem>
-                  <NavItem active>
+                  <NavItem >
+                    <NavLink to="/About">About</NavLink>
+                  </NavItem>
+                  <NavItem >
+                    <NavLink to="/Why">Why</NavLink>
+                  </NavItem>
+                  <NavItem >
                     <NavLink to="/Github">Github</NavLink>
                   </NavItem>
-                  <NavItem active>
+                  <NavItem >
                     <NavLink to="/Trello">Trello</NavLink>
                   </NavItem>
-                  <NavItem active>
+                  <NavItem >
                     <NavLink to="/Team">Meet The Team</NavLink>
                   </NavItem>
-                  <NavItem>
-                    <Dropdown>
                       {this.state.isLoggedIn ? (
-                        <>
-                          <DropdownToggle nav caret>
-                            <div className="d-none d-md-inline">Profile</div>
-                          </DropdownToggle>
-                          <DropdownMenu right>
-                            <DropdownItem href="/Local">Local</DropdownItem>
-                            <DropdownItem href="/State">State</DropdownItem>
-                            <DropdownItem href="/National">
-                              National
-                            </DropdownItem>
-                          </DropdownMenu>
-                        </>
+                        <NavItem >
+                      
+                          <Dropdown>
+                          <DropdownToggle nav caret> Representatives </DropdownToggle>
+                          <MDBDropdownMenu className="dropdown-default" right>
+                            <MDBDropdownItem href="/Local">Local</MDBDropdownItem>
+                            <MDBDropdownItem href="/State">State</MDBDropdownItem>
+                            <MDBDropdownItem href="/National">National</MDBDropdownItem>
+                          </MDBDropdownMenu>
+                        </Dropdown>
+                   
+                        </NavItem>
+
                       ) : null}
-                    </Dropdown>
-                  </NavItem>
                 </NavbarNav>
+
                 <NavbarNav right>
                   {this.state.isLoggedIn ? (
                     <LogoutButton clickLogout={this.clickLogout} />
@@ -175,6 +185,8 @@ class App extends Component {
                 return <Register doLoggedIn={this.doLoggedIn} {...props} />;
               }}
             />
+            <Route path="/About" component={About} />
+            <Route path="/Why" component={Why} />
             <Route path="/Github" component={Github} />
             <Route path="/Trello" component={Trello} />
             <Route path="/Team" component={Team} />
