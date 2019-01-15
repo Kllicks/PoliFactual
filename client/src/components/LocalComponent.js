@@ -23,18 +23,23 @@ class Locals extends Component {
 
   componentDidMount() {
     let streetaddress = sessionStorage.getItem("streetaddress");
-
+    let city = sessionStorage.getItem("city");
+    let state = sessionStorage.getItem("currentstate");
     let zipcode = sessionStorage.getItem("zipcode");
 
-    const addressUrl = encodeURI(`${streetaddress} ${zipcode}`);
+    const addressUrl = encodeURI(
+      `${streetaddress} ${city} ${state} ${zipcode}`
+    );
+    console.log(addressUrl);
 
     fetch(
-      `https://www.googleapis.com/civicinfo/v2/representatives?address=1554%20line%20st%20decatur%20ga%2030032&includeOffices=true&key=AIzaSyB3cRW6zO8D3INc-NHDFA-0ck77gQAYpOU`,
+      `https://www.googleapis.com/civicinfo/v2/representatives?address=${addressUrl}&includeOffices=true&key=AIzaSyB3cRW6zO8D3INc-NHDFA-0ck77gQAYpOU`,
       { headers: { "Content-Type": "application/json; charset=utf-8" } }
     )
       .then(response => response.json())
       .then(results => {
         let newResults = Object.values(results); // newResults is the json response array of the users civic representives at each elected level of government.
+        console.log(newResults);
         let ocdArray = newResults[2]; // ocdArray equals the names of the ocd divisions returned from the api.
         let officesArray = newResults[3]; // officesArray equals the names of the office and info about that office for each level of elected government and its
         let personInfoArray = newResults[4]; // personInfoArray is the names and info for the person who currently has been elected to the seat of the newResults array.
@@ -88,7 +93,8 @@ class Locals extends Component {
 
           let TwitterHandle; // establish a TwitterHandle variable.
 
-          let personAddress = personInfo.address[0] || null; //personAddress equals each personInfo.address array index 0 or null
+          let personAddress = personInfo.address ? personInfo.address[0] : null; //personAddress equals each personInfo.address array index 0 or null
+          let phoneNumber = personInfo.phones ? personInfo.phones[0] : null; //personAddress equals each personInfo.address array index 0 or null
 
           let personEmail = personInfo.emails || null; // if an elected official has an email address add that value to personEmail.
           let personPhoto = personInfo.photoUrl || null; //if an elected official has a photo url add that value to personPhoto
@@ -120,7 +126,7 @@ class Locals extends Component {
             address: personAddress,
             officeIndices: office.officialIndices,
             party: personInfo.party,
-            phoneNumber: personInfo.phones[0],
+            phoneNumber: phoneNumber,
             twitter: TwitterHandle,
             email: personEmail,
             photo: personPhoto,
@@ -168,12 +174,20 @@ class Locals extends Component {
                   <br />
                 </CardTitle>
                 <CardText>
-                  {item.address.line1 ? <>{item.address.line1}</> : null}
-                  {item.address.line2 ? <>{item.address.line2}</> : null}
-                  {item.address.city ? <>{item.address.city}</> : null}
-                  {item.address.state ? <>{item.address.state}</> : null}
-                  {item.address.zip ? <>{item.address.zip}</> : null}
-                  {item.party ? <>{item.party}</> : null}
+                  {item.address ? (
+                    <>
+                      ({item.address.line1 ? <>{item.address.line1}</> : null}
+                      {item.address.line2 ? <>{item.address.line2}</> : null}
+                      {item.address.city ? <>{item.address.city}</> : null}
+                      {item.address.state ? <>{item.address.state}</> : null}
+                      {item.address.zip ? <>{item.address.zip}</> : null})
+                    </>
+                  ) : null}
+                  {item.party && item.party !== "Unknown" ? (
+                    <>
+                      <>{item.party}</>
+                    </>
+                  ) : null}
                   {item.phoneNumber ? <>{item.phoneNumber}</> : null}
                   {item.url ? <a href={item.url}>{item.url}</a> : null}
                   {item.twitter ? (
