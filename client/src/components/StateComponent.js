@@ -43,7 +43,7 @@ class States extends Component {
         console.log(newResults[4]);
         let personInfoArray = newResults[4]; // personInfoArray is the names and info for the person who currently has been elected to the seat of the newResults array.
         let masterArray = [];
-        console.log(newResults[3][2].divisionId);
+        // console.log(newResults[3][2].divisionId);
         officesArray.forEach(office => {
           if (office.divisionId === newResults[3][2].divisionId) {
             //   console.log(office.name);
