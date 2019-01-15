@@ -2,6 +2,7 @@ import React from "react";
 import {  MDBContainer, MDBRow, MDBCol, MDBCard, MDBIcon, MDBBtn  } from "mdbreact";
 
 import Styles from '../styles/Github.css';
+import githubpic from '../styles/images/Github.png';
 
 const Github = () => {
   return (
@@ -11,12 +12,9 @@ const Github = () => {
         <MDBRow>
           <MDBCol md="12" className="mb-4">
             <MDBCard
-              // className="card-image"
-              // style={{
-              //   backgroundImage:
-              //     "url(https://mdbootstrap.com/img/Photos/Others/img%20%2832%29.jpg)"
-              // }}
+              
             >
+            <img src={githubpic} className="img-fluid" />
               <div className="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 white">
                 <div>
                   <h2 className="indigo-text py-3 font-weight-bold">
