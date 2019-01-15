@@ -22,94 +22,111 @@ class Locals extends Component {
   }
 
   componentDidMount() {
-    // let apiRequest1 = fetch(
-    //   "https://www.googleapis.com/civicinfo/v2/representatives?address=1554%20line%20st.%2030032&includeOffices=true&key=git",
-    //   { headers: { "Content-Type": "application/json; charset=utf-8" } }
-    // ).then(response => response.json());
-
-    // let apiRequest2 = fetch(
-    //   "http://www.opensecrets.org/api/?method=getLegislators&id=NJ&",
-    //   {
-    //     headers: { apikey: "cd6516f049350cdb9ffc4264527af56e" }
-    //   }
-    // ).then(response => response.json());
-
-    // let combinedData = { apiRequest1: {}, apiRequest2: {} };
-
-    // Promise.all([apiRequest1, apiRequest2])
-    //   .then(function(values) {
-    //     combinedData["apiRequest1"] = values[0];
-    //     combinedData["apiRequest2"] = values[1];
-    //     return combinedData;
-    //   })
-
     let streetaddress = sessionStorage.getItem("streetaddress");
-    console.log(streetaddress);
+
     let zipcode = sessionStorage.getItem("zipcode");
-    console.log(zipcode);
 
     const addressUrl = encodeURI(`${streetaddress} ${zipcode}`);
-    console.log(addressUrl);
 
     fetch(
-      `https://www.googleapis.com/civicinfo/v2/representatives?address=${addressUrl}&includeOffices=true&key=AIzaSyB3cRW6zO8D3INc-NHDFA-0ck77gQAYpOU`,
+      `https://www.googleapis.com/civicinfo/v2/representatives?address=1554%20line%20st%20decatur%20ga%2030032&includeOffices=true&key=AIzaSyB3cRW6zO8D3INc-NHDFA-0ck77gQAYpOU`,
       { headers: { "Content-Type": "application/json; charset=utf-8" } }
     )
       .then(response => response.json())
       .then(results => {
         let newResults = Object.values(results); // newResults is the json response array of the users civic representives at each elected level of government.
-        // let otherResults = Object.values(combinedData.apiRequest2); // otherResults will be json response array of the users civic representives at each elected level of government.
-        console.log(newResults);
-        // console.log(otherResults);
+        let ocdArray = newResults[2]; // ocdArray equals the names of the ocd divisions returned from the api.
         let officesArray = newResults[3]; // officesArray equals the names of the office and info about that office for each level of elected government and its
-        console.log(officesArray);
-        console.log(officesArray[0].divisionId);
-        console.log("hi");
-        console.log(newResults[4]);
         let personInfoArray = newResults[4]; // personInfoArray is the names and info for the person who currently has been elected to the seat of the newResults array.
-        let masterArray = [];
-        // console.log(newResults[3][newResults[3].length - 1].divisionId);
+        let countyKey = ""; // create a new variable countyKey as an empty sting to accept an upcoming assignment
+        let councilKey = ""; // create a new variable councilKey as an empty sting to accept an upcoming assignment
+        Object.keys(ocdArray).forEach(element => {
+          // for each key in the ocd array make a new array with the value of that key under the following circumspances:
+          if (
+            (element.includes("county") || element.includes("city")) && // if the key includes the value "county" or the key includes the value "city"
+            !element.includes("council") // and the key does not inclyde "council"
+          ) {
+            countyKey = element; // add the value of the key to the countyKey variable.
+          }
+          if (element.includes("council")) {
+            // if the key includes the value council...
+            councilKey = element; // add the value of the key to the councilKey variable.
+          }
+        });
 
-        for (let i = 3; i < officesArray.length; i++) {
-          let office = officesArray[i];
-          office.officialIndices.forEach(index => {
-            // console.log(personInfoArray[index]);
-            console.log("what is happening?!?!");
-            let personInfo = personInfoArray[index];
-            let TwitterHandle;
-            // console.log(personInfo.address);
-            let personEmail = personInfo.emails || null; // if an elected official has an email address add that value to personEmail.
-            let personPhoto = personInfo.photoUrl || null; //if an elected official has a photo url add that value to personPhoto
-            let personUrl = personInfo.urls || null; // if an elected official has a website (personal or for the department) add that value to personUrl
-            console.log(personInfo);
-            console.log(personUrl);
-            // if (personInfo.address) {
-            if (personInfoArray[index].channels) {
-              // console.log("fart machine");
+        let localOfficeName = ocdArray[councilKey].name; // this is the name of the office held by the key value that includes council from the above forEach/if statement.
+        let indicesArray = ocdArray[councilKey].officeIndices; // this array will hold the values of the officeIndices that has the value of councilKey from the ocdArray.
+        indicesArray = indicesArray.concat(ocdArray[countyKey].officeIndices); // combine each officeIndices in the indices array;
+        let wonderfulData = indicesArray.map(index => {
+          // create a variable wonderfulData that will map through each index of the indicesArray, then...
+          let positionData = { positionName: officesArray[index].name }; // position data will equal the value of name of the corresponding index of the officesArray.
+          let positionIndices = officesArray[index].officialIndices; // positionIndices will equal the officalIndices value of the index of that officeArray.
+          positionData.people = positionIndices.map(index2 => {
+            // positionData.people will map through the values of positionIndices and then...
+            return personInfoArray[index2]; //retun the corresponding index from the personInfoArray for each.
+          });
+          return positionData; // return the positionData || name of that index.
+        });
+
+        /////////////////////////////////////////////////
+        //
+        //  wonderfulData will return an array of objects
+        //  each index of the object will have keys with the names of
+        //    people: whos value will have another array of objects with info about that person such as address, email, phone number, etc.
+        //    positionName: which will have a key value equal to the name of the position.
+        //
+        /////////////////////////////////////////////////
+
+        console.log(wonderfulData);
+
+        let masterArray = []; //create a new array called masterarray. setting it as an empty array awaiting assignment.
+
+        for (let i = 0; i < wonderfulData.length; i++) {
+          // for loop starting at "i" = 0 we will increment "i" by one each time we loop through as long as i less than or equal to the length of the wonderfulData array.
+          let office = wonderfulData[i].positionName; // office = officesArray[each index]
+          let personInfo = wonderfulData[i].people[0]; // personInfo equals each index of personInfoArray.
+
+          let TwitterHandle; // establish a TwitterHandle variable.
+
+          let personAddress = personInfo.address[0] || null; //personAddress equals each personInfo.address array index 0 or null
+
+          let personEmail = personInfo.emails || null; // if an elected official has an email address add that value to personEmail.
+          let personPhoto = personInfo.photoUrl || null; //if an elected official has a photo url add that value to personPhoto
+          let personUrl = personInfo.urls || null; // if an elected official has a website (personal or for the department) add that value to personUrl
+
+          wonderfulData.forEach(index => {
+            // for each index in offices array.offical indices.
+
+            if (personInfo.channels) {
+              // if the index of personInfoArray has a .channels value
               personInfo.channels.forEach(index2 => {
+                // for each index of .channels
                 if (index2.type === "Twitter") {
-                  // console.log("hey buddy!");
-                  // console.log(index2.id);
-                  let theirTwitterHandle = index2.id;
-                  TwitterHandle = theirTwitterHandle;
-                  return TwitterHandle;
+                  // if the key name of that index equals twitter
+                  let theirTwitterHandle = index2.id; //theirTwitterHandle equals the key value of twitter key.
+                  TwitterHandle = theirTwitterHandle; // add the value of theirTwitterHandle to TwitterHandle;
+                  return TwitterHandle; //return the value of TwitterHandle so it can be accesed outside of the forEach
+                } else {
+                  let TwitterHandle = null; // if that index of the personInfoArray.channels does not have a twitter set their TwitterHandle to null
+                  return TwitterHandle; // return the value of TwitterHandle so it can be accesed outside of the forEach
                 }
               });
-
-              let personOfficeInfo = {
-                officeName: office.name,
-                personName: personInfo.name,
-                address: personInfo.address[0] || undefined,
-                party: personInfo.party,
-                phoneNumber: personInfo.phones[0],
-                twitter: TwitterHandle,
-                email: personEmail,
-                photo: personPhoto,
-                url: personUrl
-              };
-              masterArray.push(personOfficeInfo);
             }
           });
+          // establish a variable named personOfficenfo as an object to hold values we want to used for state
+          let personOfficeInfo = {
+            officeName: office,
+            personName: personInfo.name,
+            address: personAddress,
+            officeIndices: office.officialIndices,
+            party: personInfo.party,
+            phoneNumber: personInfo.phones[0],
+            twitter: TwitterHandle,
+            email: personEmail,
+            photo: personPhoto,
+            url: personUrl
+          };
+          masterArray.push(personOfficeInfo); // push each instance in personOfficeInfo info into masterArray
         }
 
         this.setState({
@@ -123,6 +140,7 @@ class Locals extends Component {
 
   render() {
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
+      // map through the item and index of each item inthis.state.personofficeinfo
       return (
         <Col>
           <Card style={{ width: "20rem" }}>
@@ -135,13 +153,11 @@ class Locals extends Component {
                 <CardTitle>
                   {item.photo ? (
                     <>
-                      <img
-                        style={{ width: "13rem", height: "15rem" }}
-                        src={item.photo}
-                        alt=""
-                      />
+                      <img style={{ width: "13rem", height: "15rem" }} alt="" />
                     </>
                   ) : null}
+
+                  <br />
                   {item.personName ? (
                     <>
                       <a href={item.url}>{item.personName}</a>
@@ -159,7 +175,7 @@ class Locals extends Component {
                   {item.address.zip ? <>{item.address.zip}</> : null}
                   {item.party ? <>{item.party}</> : null}
                   {item.phoneNumber ? <>{item.phoneNumber}</> : null}
-                  {/* {item.url ? <a href={item.url}>{item.url}</a> : null} */}
+                  {item.url ? <a href={item.url}>{item.url}</a> : null}
                   {item.twitter ? (
                     <>
                       <Timeline
@@ -172,7 +188,6 @@ class Locals extends Component {
                           height: "400",
                           width: "60%"
                         }}
-                        onLoad={() => console.log("Timeline is loaded!")}
                       />
                     </>
                   ) : null}

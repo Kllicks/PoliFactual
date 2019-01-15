@@ -45,7 +45,10 @@ class States extends Component {
         let masterArray = [];
         console.log(newResults[3][2].divisionId);
         officesArray.forEach(office => {
-          if (office.divisionId === newResults[3][2].divisionId) {
+          if (
+            office.divisionId === newResults[3][2].divisionId ||
+            office.divisionId === newResults[3][3].divisionId
+          ) {
             //   console.log(office.name);
             //   console.log(office.officialIndices);
             office.officialIndices.forEach(index => {
