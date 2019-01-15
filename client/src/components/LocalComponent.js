@@ -22,7 +22,7 @@ class Locals extends Component {
   }
 
   componentDidMount() {
-    let streetaddress = sessionStorage.getItem("streetaddress");
+    let streetaddress = sessionStorage.getItem("streetaddress"); // streetaddress equals the value that the useradded to the street address from the database.
     let city = sessionStorage.getItem("city");
     let state = sessionStorage.getItem("currentstate");
     let zipcode = sessionStorage.getItem("zipcode");
@@ -41,27 +41,38 @@ class Locals extends Component {
         let newResults = Object.values(results); // newResults is the json response array of the users civic representives at each elected level of government.
         console.log(newResults);
         let ocdArray = newResults[2]; // ocdArray equals the names of the ocd divisions returned from the api.
-        let officesArray = newResults[3]; // officesArray equals the names of the office and info about that office for each level of elected government and its
+        let officesArray = newResults[3]; // officesArray equals the names of the office and info about that office for each level of elected government and its.
         let personInfoArray = newResults[4]; // personInfoArray is the names and info for the person who currently has been elected to the seat of the newResults array.
         let countyKey = ""; // create a new variable countyKey as an empty sting to accept an upcoming assignment
         let councilKey = ""; // create a new variable councilKey as an empty sting to accept an upcoming assignment
         Object.keys(ocdArray).forEach(element => {
           // for each key in the ocd array make a new array with the value of that key under the following circumspances:
-          if (
-            (element.includes("county") || element.includes("city")) && // if the key includes the value "county" or the key includes the value "city"
-            !element.includes("council") // and the key does not inclyde "council"
-          ) {
-            countyKey = element; // add the value of the key to the countyKey variable.
-          }
+          // if (
+          //   (element.includes("county") || element.includes("city")) && // if the key includes the value "county" or the key includes the value "city".
+          //   !element.includes("council") // and the key does not inclyde "council"
+          // ) {
+          //   countyKey = element; // add the value of the key to the countyKey variable.
+          // }
+          console.log(element);
           if (element.includes("council")) {
             // if the key includes the value council...
             councilKey = element; // add the value of the key to the councilKey variable.
+          } else if (element.includes("county") || element.includes("city")) {
+            console.log("found a county or city");
+            countyKey = element; // add the value of the key to the countyKey variable.
           }
         });
+        console.log(councilKey);
+        console.log(countyKey);
+        console.log("those were the keysz");
 
-        let localOfficeName = ocdArray[councilKey].name; // this is the name of the office held by the key value that includes council from the above forEach/if statement.
-        let indicesArray = ocdArray[councilKey].officeIndices; // this array will hold the values of the officeIndices that has the value of councilKey from the ocdArray.
-        indicesArray = indicesArray.concat(ocdArray[countyKey].officeIndices); // combine each officeIndices in the indices array;
+        // let localOfficeName = ocdArray[councilKey].name; // this is the name of the office held by the key value that includes council from the above forEach/if statement.
+        let indicesArray = [];
+        if (councilKey) {
+          indicesArray = ocdArray[councilKey].officeIndices;
+        }
+        // this array will hold the values of the officeIndices that has the value of councilKey from the ocdArray.
+        indicesArray = indicesArray.concat(ocdArray[countyKey].officeIndices); // combine each officeIndices in the indices array.
         let wonderfulData = indicesArray.map(index => {
           // create a variable wonderfulData that will map through each index of the indicesArray, then...
           let positionData = { positionName: officesArray[index].name }; // position data will equal the value of name of the corresponding index of the officesArray.
@@ -88,38 +99,38 @@ class Locals extends Component {
 
         for (let i = 0; i < wonderfulData.length; i++) {
           // for loop starting at "i" = 0 we will increment "i" by one each time we loop through as long as i less than or equal to the length of the wonderfulData array.
-          let office = wonderfulData[i].positionName; // office = officesArray[each index]
+          let office = wonderfulData[i].positionName;
           let personInfo = wonderfulData[i].people[0]; // personInfo equals each index of personInfoArray.
 
           let TwitterHandle; // establish a TwitterHandle variable.
 
-          let personAddress = personInfo.address ? personInfo.address[0] : null; //personAddress equals each personInfo.address array index 0 or null
-          let phoneNumber = personInfo.phones ? personInfo.phones[0] : null; //personAddress equals each personInfo.address array index 0 or null
+          let personAddress = personInfo.address ? personInfo.address[0] : null; //personAddress equals each personInfo.address array index 0 or null.
+          let phoneNumber = personInfo.phones ? personInfo.phones[0] : null; //personAddress equals each personInfo.address array index 0 or null.
 
           let personEmail = personInfo.emails || null; // if an elected official has an email address add that value to personEmail.
-          let personPhoto = personInfo.photoUrl || null; //if an elected official has a photo url add that value to personPhoto
-          let personUrl = personInfo.urls || null; // if an elected official has a website (personal or for the department) add that value to personUrl
+          let personPhoto = personInfo.photoUrl || null; //if an elected official has a photo url add that value to personPhoto.
+          let personUrl = personInfo.urls || null; // if an elected official has a website (personal or for the department) add that value to personUrl.
 
           wonderfulData.forEach(index => {
             // for each index in offices array.offical indices.
 
             if (personInfo.channels) {
-              // if the index of personInfoArray has a .channels value
+              // if the index of personInfoArray has a .channels value.
               personInfo.channels.forEach(index2 => {
                 // for each index of .channels
                 if (index2.type === "Twitter") {
-                  // if the key name of that index equals twitter
+                  // if the key name of that index equals twitter.
                   let theirTwitterHandle = index2.id; //theirTwitterHandle equals the key value of twitter key.
-                  TwitterHandle = theirTwitterHandle; // add the value of theirTwitterHandle to TwitterHandle;
-                  return TwitterHandle; //return the value of TwitterHandle so it can be accesed outside of the forEach
+                  TwitterHandle = theirTwitterHandle; // add the value of theirTwitterHandle to TwitterHandle.
+                  return TwitterHandle; //return the value of TwitterHandle so it can be accesed outside of the forEach.
                 } else {
-                  let TwitterHandle = null; // if that index of the personInfoArray.channels does not have a twitter set their TwitterHandle to null
-                  return TwitterHandle; // return the value of TwitterHandle so it can be accesed outside of the forEach
+                  let TwitterHandle = null; // if that index of the personInfoArray.channels does not have a twitter set their TwitterHandle to null.
+                  return TwitterHandle; // return the value of TwitterHandle so it can be accesed outside of the forEach.
                 }
               });
             }
           });
-          // establish a variable named personOfficenfo as an object to hold values we want to used for state
+          // establish a variable named personOfficenfo as an object to hold values we want to used for state.
           let personOfficeInfo = {
             officeName: office,
             personName: personInfo.name,
@@ -132,7 +143,7 @@ class Locals extends Component {
             photo: personPhoto,
             url: personUrl
           };
-          masterArray.push(personOfficeInfo); // push each instance in personOfficeInfo info into masterArray
+          masterArray.push(personOfficeInfo); // push each instance in personOfficeInfo info into masterArray.
         }
 
         this.setState({
@@ -146,7 +157,7 @@ class Locals extends Component {
 
   render() {
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
-      // map through the item and index of each item inthis.state.personofficeinfo
+      // map through the item and index of each item inthis.state.personofficeinfo.
       return (
         <Col>
           <Card style={{ width: "20rem" }}>
