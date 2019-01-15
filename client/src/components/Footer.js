@@ -62,10 +62,10 @@ import {
       <h5 className="title indigo darker-4">Follow Us</h5>
       <ul>
         <li className="list-unstyled">
-          <a href="#!">Github</a>
+          <a href="https://github.com/Kllicks/Polifactual">Github</a>
         </li>
         <li className="list-unstyled">
-          <a href="#!">Trello</a>
+          <a href="https://trello.com/b/pipJjSew/capstone-project">Trello</a>
         </li>
       </ul>
       </Col>
