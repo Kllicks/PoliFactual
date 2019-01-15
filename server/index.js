@@ -70,11 +70,12 @@ app.post('/api/register', (req, res) => {
     const newUsername = req.body.username;
     const newPassword = req.body.password;
     const newStreetAddress = req.body.streetaddress;
+    const newCity = req.body.city;
     const newState = req.body.currentstate;
     const newZipcode = req.body.zipcode;
     
     // 2. Call User.add
-    User.add(newName, newUsername, newStreetAddress, newState, newZipcode, newPassword)
+    User.add(newName, newUsername, newStreetAddress, newCity, newState, newZipcode, newPassword)
         .catch((err) => {
             console.log(err);
             console.log('that was the error');

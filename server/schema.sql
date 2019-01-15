@@ -15,6 +15,7 @@ create table users(
     address text,
     username varchar(200) unique not null, 
     streetaddress text,
+    city text,
     currentstate text,
     zipcode text,
     pwhash varchar(60) not null

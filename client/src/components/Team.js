@@ -71,8 +71,7 @@ class Team extends React.Component {
                 <h5 className="font-weight-bold mt-4 mb-3">Kyle Sekellick</h5>
                 <p className="text-uppercase blue-text">Software Engineer</p>
                 <p className="grey-text">
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                  qui officia deserunt mollit anim est fugiat nulla id eu laborum.
+                  Experience developing back-end software and front-end applications, performing quality assurance reviews, and building process solutions to improve applications for clients. Seeking opportunities to leverage software development and computer application design skills in a collaborative environment.
                 </p>
                 <ul className="list-unstyled mb-0">
                 <a href="mailto:sekellickkyle@yahoo.com" className="p-2 fa-lg">
