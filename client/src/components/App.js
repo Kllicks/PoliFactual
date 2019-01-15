@@ -31,9 +31,10 @@ import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  
 } from "mdbreact";
-import { MDBBtn } from "mdbreact";
+import { MDBBtn, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 
 import {
   BrowserRouter as Router,
@@ -97,43 +98,41 @@ class App extends Component {
               <NavbarToggler onClick={this.toggleCollapse} />
               <Collapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
                 <NavbarNav left>
-                  <NavItem active>
+                  <NavItem >
                     <NavLink to="/">Home</NavLink>
                   </NavItem>
-                  <NavItem active>
+                  <NavItem >
                     <NavLink to="/About">About</NavLink>
                   </NavItem>
-                  <NavItem active>
+                  <NavItem >
                     <NavLink to="/Why">Why</NavLink>
                   </NavItem>
-                  <NavItem active>
+                  <NavItem >
                     <NavLink to="/Github">Github</NavLink>
                   </NavItem>
-                  <NavItem active>
+                  <NavItem >
                     <NavLink to="/Trello">Trello</NavLink>
                   </NavItem>
-                  <NavItem active>
+                  <NavItem >
                     <NavLink to="/Team">Meet The Team</NavLink>
                   </NavItem>
-                  <NavItem>
-                    <Dropdown>
                       {this.state.isLoggedIn ? (
-                        <>
-                          <DropdownToggle nav caret>
-                            <div className="d-none d-md-inline">Profile</div>
-                          </DropdownToggle>
-                          <DropdownMenu right>
-                            <DropdownItem href="/Local">Local</DropdownItem>
-                            <DropdownItem href="/State">State</DropdownItem>
-                            <DropdownItem href="/National">
-                              National
-                            </DropdownItem>
-                          </DropdownMenu>
-                        </>
+                        <NavItem >
+                      
+                          <Dropdown>
+                          <DropdownToggle nav> Profile </DropdownToggle>
+                          <MDBDropdownMenu className="dropdown-default" right>
+                            <MDBDropdownItem href="/Local">Local</MDBDropdownItem>
+                            <MDBDropdownItem href="/State">State</MDBDropdownItem>
+                            <MDBDropdownItem href="/National">National</MDBDropdownItem>
+                          </MDBDropdownMenu>
+                        </Dropdown>
+                   
+                        </NavItem>
+
                       ) : null}
-                    </Dropdown>
-                  </NavItem>
                 </NavbarNav>
+
                 <NavbarNav right>
                   {this.state.isLoggedIn ? (
                     <LogoutButton clickLogout={this.clickLogout} />
