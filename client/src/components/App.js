@@ -12,6 +12,9 @@ import Nationals from "./NationalComponent";
 import Team from "./Team";
 import Trello from "./Trello";
 import Github from "./Github";
+import About from "./About";
+import Why from "./Why";
+
 import LogoutButton from "./logoutButton";
 
 import axios from "axios";
@@ -57,6 +60,10 @@ class App extends Component {
     };
   };
 
+  toggleCollapse = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  }
+
   doLoggedIn = () => {
     this.setState({ isLoggedIn: true });
   };
@@ -83,8 +90,11 @@ class App extends Component {
           <>
             <Navbar color="transparent" dark expand="md">
               <NavbarBrand>
+                <h2>
                 <strong className="white-text">Polifactual</strong>
+                </h2>
               </NavbarBrand>
+<<<<<<< HEAD
               <NavbarToggler
               onClick={this.toggleCollapse}
               />
@@ -128,6 +138,74 @@ class App extends Component {
              
              
               
+=======
+              <NavbarToggler onClick={this.toggleCollapse} />
+              <Collapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+                <NavbarNav left>
+                  <NavItem active>
+                    <NavLink to="/">Home</NavLink>
+                  </NavItem>
+                  <NavItem active>
+                    <NavLink to="/About">About</NavLink>
+                  </NavItem>
+                  <NavItem active>
+                    <NavLink to="/Why">Why</NavLink>
+                  </NavItem>
+                  <NavItem active>
+                    <NavLink to="/Github">Github</NavLink>
+                  </NavItem>
+                  <NavItem active>
+                    <NavLink to="/Trello">Trello</NavLink>
+                  </NavItem>
+                  <NavItem active>
+                    <NavLink to="/Team">Meet The Team</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <Dropdown>
+                      {this.state.isLoggedIn ? (
+                        <>
+                          <DropdownToggle nav caret>
+                            <div className="d-none d-md-inline">Profile</div>
+                          </DropdownToggle>
+                          <DropdownMenu right>
+                            <DropdownItem href="/Local">Local</DropdownItem>
+                            <DropdownItem href="/State">State</DropdownItem>
+                            <DropdownItem href="/National">
+                              National
+                            </DropdownItem>
+                          </DropdownMenu>
+                        </>
+                      ) : null}
+                    </Dropdown>
+                  </NavItem>
+                </NavbarNav>
+                <NavbarNav right>
+                  {this.state.isLoggedIn ? (
+                    <LogoutButton clickLogout={this.clickLogout} />
+                  ) : (
+                    <div>
+                      <Link to="/Register">
+                        <MDBBtn
+                          floating
+                          color="indigo darken-4"
+                          onClick={this.clickLogin}
+                        >
+                          Register
+                        </MDBBtn>
+                      </Link>
+                      <Link to="/Login">
+                      <MDBBtn
+                        floating
+                        color="indigo darken-4"
+                        onClick={this.clickLogin}
+                      >
+                        Login
+                      </MDBBtn>
+                    </Link>
+                    </div>
+                  )}
+                </NavbarNav>
+>>>>>>> origin/cardflip
               </Collapse>
             </Navbar>
 
@@ -154,6 +232,8 @@ class App extends Component {
                 return <Register doLoggedIn={this.doLoggedIn} {...props} />;
               }}
             />
+            <Route path="/About" component={About} />
+            <Route path="/Why" component={Why} />
             <Route path="/Github" component={Github} />
             <Route path="/Trello" component={Trello} />
             <Route path="/Team" component={Team} />

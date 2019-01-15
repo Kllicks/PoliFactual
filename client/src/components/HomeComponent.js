@@ -23,7 +23,6 @@ class Home extends React.Component {
     return (
       <div>
         <MDBContainer>
-        {/* First Section */}
           <MDBMask className="d-flex justify-content-center align-items-center gradient">
               <MDBContainer className="main">
                 <MDBRow>
@@ -35,10 +34,17 @@ class Home extends React.Component {
                     <h6 className="mb-4">
                       Bringing you your local, state, and national legislative representatives' information right to you from one source.
                     </h6>
+<<<<<<< HEAD
                     {/* <MDBBtn color="white">Download</MDBBtn>
                     <MDBBtn outline color="white">
                       Learn More
                     </MDBBtn> */}
+=======
+                    <MDBBtn color="indigo darken-4">Register Now!</MDBBtn>
+                    <MDBBtn outline color="white">
+                      <strong>Learn More</strong>
+                    </MDBBtn>
+>>>>>>> origin/cardflip
                   </div>
                   <MDBCol md="6" xl="5" className="mt-xl-5">
                     <img
@@ -51,6 +57,7 @@ class Home extends React.Component {
               </MDBContainer>
             </MDBMask>
         </MDBContainer>
+<<<<<<< HEAD
 
 
  {/* Second Section */}
@@ -208,6 +215,8 @@ class Home extends React.Component {
       </MDBContainer>
 
 
+=======
+>>>>>>> origin/cardflip
       </div>
     );
   }
