@@ -90,9 +90,9 @@ class App extends Component {
           <>
             <Navbar color="transparent" dark expand="md">
               <NavbarBrand>
-                <h3>
+                <h2>
                 <strong className="white-text">Polifactual</strong>
-                </h3>
+                </h2>
               </NavbarBrand>
               <NavbarToggler onClick={this.toggleCollapse} />
               <Collapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
