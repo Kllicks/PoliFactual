@@ -57,6 +57,10 @@ class App extends Component {
     };
   };
 
+  toggleCollapse = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  }
+
   doLoggedIn = () => {
     this.setState({ isLoggedIn: true });
   };
@@ -123,15 +127,26 @@ class App extends Component {
                   {this.state.isLoggedIn ? (
                     <LogoutButton clickLogout={this.clickLogout} />
                   ) : (
-                    <Link to="/Register">
+                    <div>
+                      <Link to="/Register">
+                        <MDBBtn
+                          floating
+                          color="indigo darken-4"
+                          onClick={this.clickLogin}
+                        >
+                          Register
+                        </MDBBtn>
+                      </Link>
+                      <Link to="/Login">
                       <MDBBtn
                         floating
                         color="indigo darken-4"
                         onClick={this.clickLogin}
                       >
-                        Register
+                        Login
                       </MDBBtn>
                     </Link>
+                    </div>
                   )}
                 </NavbarNav>
               </Collapse>
