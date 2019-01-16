@@ -1,51 +1,54 @@
-# Meetcha!
+# Polifactual
 
-## Overview: 
+Polifactual is a web application that informs users on their local, state, and national legislative representatives.
 
-Polifactual summary. 
+By taking a users address and zipcode, our application can pull in information from the Google Civic Information API to display local, state, and national reps information for the user. National(of course) will be the same for every user.
 
-### Features: 
 
-- bunch of features
 
-## Github Link: [Polifactual](https://github.com/Kllicks/Polifactual)
+## Built With
 
-## Team Members & Roles:
-*Click on each member's name to see their GitHub profile*
+* [React](https://reactjs.org/docs/getting-started.html) -JavaScript library used to create an interactive UI
+* [Bootstrap](https://getbootstrap.com/) -HTML, CSS, and JavaScript front-end component library used to create our front-end
+* [Node.js](https://nodejs.org/en/about/) -JavaScript framework used for our back-end
+* [Express.js](https://expressjs.com/) - Framework used in conjunction with Node.js to speak to our API/PostgreSQL database
+* [PostrgreSQL](https://www.postgresql.org/) - Realational database used to store our user information
+* [AWS](https://aws.amazon.com/) -Amazon web services used to deploy application
 
-All team members are students in the [Digital Crafts](https://www.digitalcrafts.com/) September 2018 cohort.
-- [Isaac Fonseca](https://github.com/isaacfo)
-- [Brien Mizell](https://github.com/brienmizell)
-- [Helen Harris](https://github.com/hharris0803)
-- [Kyle Sekellick](https://github.com/Kllicks)
+## Images
 
-## Tools and Technologies
 
-**Languages:**
-- Stuff
+## Authors
 
-**API's**
-- Something
+* Isaac Fonseca
+* Helen Harris
+* Kyle Sekellick
+* Brein Mizell
 
-## MVP (Minimum Viable Product):
-- Something
 
-**Stretch Goals**
-- Something
 
-## Challenges & Solutions:
-**Some of the biggest challenges we faced with this project build indluded:**
+## License
 
-  1. **Challenge:** 
+Copyright 2018 Helen Harris, Isaac Fonseca, Kyle Sekellick, and Brien Mizell
 
-    Solution: 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-  2. **Challenge:** 
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-    Solution: 
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-  3. **Challenge:** 
 
-    Solution: 
+## Future Edits
 
-## Screenshots or GIF
+Adjust footer links/content
+- Currently several links in the footer do not redirect to another page. Due to time constraints we have decided to adjst the links after demo day
+
+Comment portions of code that need more clarification and clean up files
+ - Several componenets found in the code are class components, when in fact they could be fucntional components.
+ - Several imports in files are not used
+ - Replacing .then code snippets to Async and Await
+
+## Acknowledgments
+
+* Chris, Aylin, and Ian for the help debugging!
+* Bootstrap is a headache at times
