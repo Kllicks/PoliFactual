@@ -32,13 +32,13 @@ class Locals extends Component {
 
   componentDidMount() {
     let streetaddress = sessionStorage.getItem("streetaddress"); // streetaddress equals the value that the useradded to the street address from the database.
-    let city = sessionStorage.getItem("city");
-    let state = sessionStorage.getItem("currentstate");
-    let zipcode = sessionStorage.getItem("zipcode");
+    let city = sessionStorage.getItem("city"); // city equals the value that the useradded to the city from the database.
+    let state = sessionStorage.getItem("currentstate"); // state equals the value that the useradded to the state from the database.
+    let zipcode = sessionStorage.getItem("zipcode"); // zipcode equals the value that the useradded to the zip code from the database.
 
     const addressUrl = encodeURI(
       `${streetaddress} ${city} ${state} ${zipcode}`
-    );
+    ); // addressUrl equals the address that will be sent to the api.
 
     fetch(
       `https://www.googleapis.com/civicinfo/v2/representatives?address=${addressUrl}&includeOffices=true&key=AIzaSyB3cRW6zO8D3INc-NHDFA-0ck77gQAYpOU`,
@@ -54,12 +54,6 @@ class Locals extends Component {
         let councilKey = ""; // create a new variable councilKey as an empty sting to accept an upcoming assignment
         Object.keys(ocdArray).forEach(element => {
           // for each key in the ocd array make a new array with the value of that key under the following circumspances:
-          // if (
-          //   (element.includes("county") || element.includes("city")) && // if the key includes the value "county" or the key includes the value "city".
-          //   !element.includes("council") // and the key does not inclyde "council"
-          // ) {
-          //   countyKey = element; // add the value of the key to the countyKey variable.
-          // }
           if (element.includes("council")) {
             // if the key includes the value council...
             councilKey = element; // add the value of the key to the councilKey variable.
