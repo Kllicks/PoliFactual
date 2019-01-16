@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Timeline } from "react-twitter-widgets";
 import { MDBIcon, MDBContainer, MDBBtn } from "mdbreact";
+
+
 import {
   Button,
   Card,
@@ -119,6 +121,7 @@ class States extends Component {
   render() {
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
       return (
+
         <section className="text-center">
           <MDBRow>
             <MDBCol lg="3" md="10" className="mb-lg-0 mb-4">
@@ -210,13 +213,16 @@ class States extends Component {
             </MDBCol>
           </MDBRow>
         </section>
+
       );
     });
 
     return (
+     
       <div className="Main">
         <p>{officeNames}</p>
       </div>
+      
     );
   }
 }
