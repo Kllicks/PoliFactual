@@ -13,7 +13,7 @@ import {
 
 import { MDBRow, MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardFooter,  MDBTooltip } from "mdbreact";
 
-import styles from '../styles/State.css';
+// import styles from '../styles/State.css';
 
 class States extends Component {
   constructor(props) {
@@ -110,10 +110,11 @@ class States extends Component {
       return (
         <section className="text-center my-5">
         {/* <MDBRow> */}
-        <MDBCol lg="3" md="4" className="mb-lg-0 mb-4">
-          <MDBCard ecommerce>
+        <MDBCol lg="12" md="12" className="mb-lg-0 mb-12">
+          <MDBCard ecommerce align="center">
               {item.photo ? (
                 <MDBCardImage
+                  className="rounded-circle pt-4"
                   cascade
                   top 
                   style={{width: '18.5rem', height: '18rem' }} src={item.photo} alt="" />
