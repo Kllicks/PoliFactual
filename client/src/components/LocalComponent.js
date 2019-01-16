@@ -221,9 +221,9 @@ class Locals extends Component {
      <strong>Phone Number: </strong>
      {item.phoneNumber ? <>{item.phoneNumber}</> : null}
      <br/>
-     <strong>Twitter: </strong>
      {item.twitter ? (
        <>
+       <strong>Twitter: </strong>
          <Timeline
            dataSource={{
              sourceType: "profile",
