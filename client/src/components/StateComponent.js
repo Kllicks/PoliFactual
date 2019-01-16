@@ -125,7 +125,7 @@ class States extends Component {
       return (
 
         <section className="text-center my-5">
-        {/* <MDBRow> */}
+    
         <MDBCol lg="12" md="12" className="mb-lg-0 mb-12">
           <MDBCard ecommerce align="center">
               {item.photo ? (
@@ -199,7 +199,7 @@ class States extends Component {
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
-      {/* </MDBRow> */}
+    
 
         </section>
 
