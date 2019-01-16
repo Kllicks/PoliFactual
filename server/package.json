@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hharris0803/Photo_Widget.git"
+    "url": "git+https://github.com/Kllicks/Polifactual"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hharris0803/Photo_Widget/issues"
+    "url": "https://github.com/Kllicks/Polifactual"
   },
-  "homepage": "https://github.com/hharris0803/Photo_Widget#readme",
+  "homepage": "https://github.com/Kllicks/Polifactual#readme",
   "dependencies": {
     "bcrypt": "^3.0.3",
     "body-parser": "^1.18.3",
