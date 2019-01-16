@@ -57,12 +57,12 @@ class Login extends Component {
 					sessionStorage.setItem('zipcode', user.zipcode);
 
 					// Get saved data from sessionStorage
-					let streetaddress = sessionStorage.getItem('streetaddress');
-					console.log(streetaddress);
-					let currentstate = sessionStorage.getItem('currentstate');
-					console.log(currentstate);
-					let zipcode = sessionStorage.getItem('zipcode');
-					console.log(zipcode);
+					// let streetaddress = sessionStorage.getItem('streetaddress');
+					// console.log(streetaddress);
+					// let currentstate = sessionStorage.getItem('currentstate');
+					// console.log(currentstate);
+					// let zipcode = sessionStorage.getItem('zipcode');
+					// console.log(zipcode);
 
 					this.props.history.push("/local")
 				} 
@@ -102,9 +102,9 @@ class Login extends Component {
 
 				  <form className="signup-form" onSubmit={this._handleSubmit}>
 					<MDBInput 
-				  		id="username" 
-				  		label="Your name" 
-				  		icon="user" 
+				  	id="username" 
+				  	label="Your name" 
+				  	icon="user" 
 		 				placeholder="Username" 
 		 				type="text" 
 		 				name="username" 
