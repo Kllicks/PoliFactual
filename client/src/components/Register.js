@@ -106,7 +106,7 @@ class Register extends Component {
 					// console.log(currentstate);
 					// let zipcode = sessionStorage.getItem('zipcode');
                     // console.log(zipcode);
-                    // this.props.history.push('/Local')
+                    this.props.history.push('/Local')
                 }
             })
             .catch(err => {
