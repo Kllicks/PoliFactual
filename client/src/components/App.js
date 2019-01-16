@@ -120,7 +120,8 @@ class App extends Component {
                         <NavItem >
                       
                           <Dropdown>
-                          <DropdownToggle nav caret> Profile </DropdownToggle>
+
+                          <DropdownToggle nav caret> Representatives </DropdownToggle>
                           <MDBDropdownMenu className="dropdown-default" right>
                             <MDBDropdownItem href="/Local">Local</MDBDropdownItem>
                             <MDBDropdownItem href="/State">State</MDBDropdownItem>

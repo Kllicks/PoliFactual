@@ -73,8 +73,7 @@ class Team extends React.Component {
                 <h5 className="font-weight-bold mt-4 mb-3">Kyle Sekellick</h5>
                 <p className="text-uppercase indigo-text">Software Engineer</p>
                 <p className="grey-text">
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                  qui officia deserunt mollit anim est fugiat nulla id eu laborum.
+                  Experience developing software applications for clients. Seeking opportunities to leverage software development skills in a collaborative environment.
                 </p>
                 <ul className="list-unstyled mb-0">
                 <a href="mailto:sekellickkyle@yahoo.com" className="p-2 fa-lg">

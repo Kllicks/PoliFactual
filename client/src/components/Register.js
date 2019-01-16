@@ -15,7 +15,8 @@ class Register extends Component {
 			id: '',
 			name: '',
 			username: '',
-			streetaddress: '',
+            streetaddress: '',
+            city: '',
 			currentstate: '',
 			zipcode: '',
 			password: ''
@@ -43,6 +44,14 @@ class Register extends Component {
 
 		this.setState({
 			streetaddress: value
+		});
+    }
+
+    _handleCity = event => {
+		const value = event.target.value;
+
+		this.setState({
+			city: value
 		});
     }
 
@@ -85,11 +94,14 @@ class Register extends Component {
 					// Save data to sessionStorage
 					// sessionStorage.setItem('key', 'value');
 					sessionStorage.setItem('streetaddress', user.streetaddress);
+					sessionStorage.setItem('city', user.city);
 					sessionStorage.setItem('currentstate', user.currentstate);
 					sessionStorage.setItem('zipcode', user.zipcode);
 					// Get saved data from sessionStorage
 					let streetaddress = sessionStorage.getItem('streetaddress');
 					console.log(streetaddress);
+					let city = sessionStorage.getItem('city');
+					console.log(city);
 					let currentstate = sessionStorage.getItem('currentstate');
 					console.log(currentstate);
 					let zipcode = sessionStorage.getItem('zipcode');
@@ -127,6 +139,7 @@ class Register extends Component {
                         <MDBIcon icon="user" /> Register:
                       </h3>
                       <hr className="hr-light" />
+                      {/* Form */}
                         <MDBInput left
                             id="name" 
                             label="Your name" 
@@ -165,6 +178,16 @@ class Register extends Component {
                             name="streetaddress" 
                             onChange={this._handleStreetAddress}
 							value={this.state.streetaddress} />
+                        <MDBInput 
+                            id ="city" 
+                            label="City" 
+                            icon="address-book"
+                            type="text" 
+                            name="city" 
+                            autocomplete="off"
+                            name="city" 
+                            onChange={this._handleCity}
+							value={this.state.city} />
                         <MDBInput 
                             id ="currentstate" 
                             label="State" 
