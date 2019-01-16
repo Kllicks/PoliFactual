@@ -119,7 +119,6 @@ class States extends Component {
     //   .then(response => response.json())
     //   .then(data => console.log(data));
   }
-
   render() {
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
       return (
