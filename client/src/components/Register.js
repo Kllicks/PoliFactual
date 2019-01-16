@@ -98,15 +98,15 @@ class Register extends Component {
 					sessionStorage.setItem('currentstate', user.currentstate);
 					sessionStorage.setItem('zipcode', user.zipcode);
 					// Get saved data from sessionStorage
-					let streetaddress = sessionStorage.getItem('streetaddress');
-					console.log(streetaddress);
-					let city = sessionStorage.getItem('city');
-					console.log(city);
-					let currentstate = sessionStorage.getItem('currentstate');
-					console.log(currentstate);
-					let zipcode = sessionStorage.getItem('zipcode');
-                    console.log(zipcode);
-                    this.props.history.push('/Local')
+					// let streetaddress = sessionStorage.getItem('streetaddress');
+					// console.log(streetaddress);
+					// let city = sessionStorage.getItem('city');
+					// console.log(city);
+					// let currentstate = sessionStorage.getItem('currentstate');
+					// console.log(currentstate);
+					// let zipcode = sessionStorage.getItem('zipcode');
+                    // console.log(zipcode);
+                    // this.props.history.push('/Local')
                 }
             })
             .catch(err => {
@@ -125,11 +125,11 @@ class Register extends Component {
                   </h1>
                   <hr className="hr-light" />
                   <h6 className="mb-4">
-                   NOTE: Short Summary why a user should register!!!!!!!!!!!!
+                   Register and keep your address on file! That way you can login and see your current representatives!
                   </h6>
-                  <MDBBtn outline color="white">
+                  {/* <MDBBtn outline color="white">
                     Learn More
-                  </MDBBtn>
+                  </MDBBtn> */}
                 </div>
                 <MDBCol md="6" xl="5" className="mb-4">
                   <MDBCard id="classic-card">

@@ -13,6 +13,8 @@ import {
 
 import { MDBRow, MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardFooter,  MDBTooltip } from "mdbreact";
 
+import styles from '../styles/State.css';
+
 class States extends Component {
   constructor(props) {
     super(props);
@@ -106,9 +108,9 @@ class States extends Component {
   render() {
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
       return (
-        <section className="text-center">
-        <MDBRow>
-        <MDBCol lg="3" md="10" className="mb-lg-0 mb-4">
+        <section className="text-center my-5">
+        {/* <MDBRow> */}
+        <MDBCol lg="3" md="4" className="mb-lg-0 mb-4">
           <MDBCard ecommerce>
               {item.photo ? (
                 <MDBCardImage
@@ -174,7 +176,7 @@ class States extends Component {
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
-      </MDBRow>
+      {/* </MDBRow> */}
         </section>
 
       );
@@ -182,6 +184,8 @@ class States extends Component {
 
     return (
       <div className="Main">
+        <br></br>
+        <strong><h1>State Represntatives</h1></strong>
         <p>{officeNames}</p>
       </div>
     );

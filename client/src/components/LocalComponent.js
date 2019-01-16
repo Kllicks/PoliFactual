@@ -238,6 +238,8 @@ class Locals extends Component {
     });
     return (
       <div className="Main">
+      <br></br>
+        <strong><h1>Local Represntatives</h1></strong>
         <>{officeNames}</>
       </div>
     );
