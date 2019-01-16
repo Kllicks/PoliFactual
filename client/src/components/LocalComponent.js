@@ -39,7 +39,6 @@ class Locals extends Component {
     const addressUrl = encodeURI(
       `${streetaddress} ${city} ${state} ${zipcode}`
     );
-    console.log(addressUrl);
 
     fetch(
       `https://www.googleapis.com/civicinfo/v2/representatives?address=${addressUrl}&includeOffices=true&key=AIzaSyB3cRW6zO8D3INc-NHDFA-0ck77gQAYpOU`,
@@ -48,9 +47,8 @@ class Locals extends Component {
       .then(response => response.json())
       .then(results => {
         let newResults = Object.values(results); // newResults is the json response array of the users civic representives at each elected level of government.
-        console.log(newResults);
         let ocdArray = newResults[2]; // ocdArray equals the names of the ocd divisions returned from the api.
-        let officesArray = newResults[3]; // officesArray equals the names of the office and info about that office for each level of elected government and its.
+        let officesArray = newResults[3]; // officesArray equals the names of the office and info about that office for each level of elected government.
         let personInfoArray = newResults[4]; // personInfoArray is the names and info for the person who currently has been elected to the seat of the newResults array.
         let countyKey = ""; // create a new variable countyKey as an empty sting to accept an upcoming assignment
         let councilKey = ""; // create a new variable councilKey as an empty sting to accept an upcoming assignment
@@ -62,18 +60,13 @@ class Locals extends Component {
           // ) {
           //   countyKey = element; // add the value of the key to the countyKey variable.
           // }
-          console.log(element);
           if (element.includes("council")) {
             // if the key includes the value council...
             councilKey = element; // add the value of the key to the councilKey variable.
           } else if (element.includes("county") || element.includes("city")) {
-            console.log("found a county or city");
             countyKey = element; // add the value of the key to the countyKey variable.
           }
         });
-        console.log(councilKey);
-        console.log(countyKey);
-        console.log("those were the keysz");
 
         // let localOfficeName = ocdArray[councilKey].name; // this is the name of the office held by the key value that includes council from the above forEach/if statement.
         let indicesArray = [];
@@ -93,16 +86,18 @@ class Locals extends Component {
           return positionData; // return the positionData || name of that index.
         });
 
-        /////////////////////////////////////////////////
-        //
-        //  wonderfulData will return an array of objects
-        //  each index of the object will have keys with the names of
-        //    people: whos value will have another array of objects with info about that person such as address, email, phone number, etc.
-        //    positionName: which will have a key value equal to the name of the position.
-        //
-        /////////////////////////////////////////////////
-
-        console.log(wonderfulData);
+        //////////////////////////////////////////////////////////////////////////////
+        //                                                                          //
+        //    wonderfulData will return an array of objects                         //
+        //    each index of the object will have keys with the names of:            //
+        //                                                                          //
+        //    people: whos value will have another array of objects with            //
+        //        info about that person such as address, email, phone number, etc. //
+        //                                                                          //
+        //    positionName: which will have a key value equal to the name of the    //
+        //        position.                                                         //
+        //                                                                          //
+        //////////////////////////////////////////////////////////////////////////////
 
         let masterArray = []; //create a new array called masterarray. setting it as an empty array awaiting assignment.
 
@@ -111,7 +106,7 @@ class Locals extends Component {
           let office = wonderfulData[i].positionName;
           let personInfo = wonderfulData[i].people[0]; // personInfo equals each index of personInfoArray.
 
-          let TwitterHandle; // establish a TwitterHandle variable.
+          let TwitterHandle; // establish a TwitterHandle variable value to be added later.
 
           let personAddress = personInfo.address ? personInfo.address[0] : null; //personAddress equals each personInfo.address array index 0 or null.
           let phoneNumber = personInfo.phones ? personInfo.phones[0] : null; //personAddress equals each personInfo.address array index 0 or null.
@@ -168,37 +163,44 @@ class Locals extends Component {
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
       // map through the item and index of each item inthis.state.personofficeinfo.
       return (
-
-
-<section className="text-center my-5">
-<MDBCol lg="12" md="12" className="mb-lg-0 mb-12">
-  <MDBCard ecommerce align="center">
-      {item.photo ? (
-        <MDBCardImage
-          className="rounded-circle pt-4"
-          cascade
-          top 
-          style={{width: '18.5rem', height: '18rem' }} src={item.photo} alt="" />
-      ) : (
-          <img
-            style={{ width: "18.5rem", height: "18rem" }}
-            src={"/images/NoPhotoAvailable.jpg"}
-            alt=""
-          />
-        )}
-    <MDBCardBody cascade className="text-center">
-    <a href="#!" className="text-muted">
-                <h5>{item.personName ? <><a href={item.url}>{item.personName}</a></> : null}</h5>
-              </a>
-      <MDBCardTitle>
-        <strong>
-        {item.officeName ? <>{item.officeName}</> : null}
-        </strong>
-      </MDBCardTitle>
-      <hr/>
-      <MDBCardText>
-        <strong> Address: </strong>
-        {item.address ? (
+        <section className="text-center my-5">
+          <MDBCol lg="12" md="12" className="mb-lg-0 mb-12">
+            <MDBCard ecommerce align="center">
+              {item.photo ? (
+                <MDBCardImage
+                  className="rounded-circle pt-4"
+                  cascade
+                  top
+                  style={{ width: "18.5rem", height: "18rem" }}
+                  src={item.photo}
+                  alt=""
+                />
+              ) : (
+                <img
+                  style={{ width: "18.5rem", height: "18rem" }}
+                  src={"/images/NoPhotoAvailable.jpg"}
+                  alt=""
+                />
+              )}
+              <MDBCardBody cascade className="text-center">
+                <a href="#!" className="text-muted">
+                  <h5>
+                    {item.personName ? (
+                      <>
+                        <a href={item.url}>{item.personName}</a>
+                      </>
+                    ) : null}
+                  </h5>
+                </a>
+                <MDBCardTitle>
+                  <strong>
+                    {item.officeName ? <>{item.officeName}</> : null}
+                  </strong>
+                </MDBCardTitle>
+                <hr />
+                <MDBCardText>
+                  <strong> Address: </strong>
+                  {item.address ? (
                     <>
                       {item.address.line1 ? <>{item.address.line1}</> : null}
                       {item.address.line2 ? <>{item.address.line2}</> : null}
@@ -207,7 +209,7 @@ class Locals extends Component {
                       {item.address.zip ? <>{item.address.zip}</> : null}
                     </>
                   ) : null}
-                  <br/>
+                  <br />
                   <strong>Party: </strong>
                   {item.party && item.party !== "Unknown" ? (
                     <>
@@ -215,52 +217,57 @@ class Locals extends Component {
                     </>
                   ) : null}
 
-     
-    
-     <br/>
-     <strong>Phone Number: </strong>
-     {item.phoneNumber ? <>{item.phoneNumber}</> : null}
-     <br/>
-     {item.twitter ? (
-       <>
-       <strong>Twitter: </strong>
-         <Timeline
-           dataSource={{
-             sourceType: "profile",
-             screenName: item.twitter
-           }}
-           options={{
-             username: item.twitter,
-             height: "400",
-             width: "60%"
-           }}
-           onLoad={() => console.log("Timeline is loaded!")}
-         />
-       </>
-     ) : null}
-      </MDBCardText>
-      <MDBCardFooter className="px-1">
-          {item.email ? (
-            <span className="float-right">
-            <MDBBtn size="lg" tag="a" floating social="email" href={"mailto:" + item.email}>
-            <MDBIcon icon="envelope" />
-          </MDBBtn>
-          </span>
-          ) : null}
-      </MDBCardFooter>
-    </MDBCardBody>
-  </MDBCard>
-</MDBCol>
-{/* </MDBRow> */}
-
-</section>
+                  <br />
+                  <strong>Phone Number: </strong>
+                  {item.phoneNumber ? <>{item.phoneNumber}</> : null}
+                  <br />
+                  {item.twitter ? (
+                    <>
+                      <strong>Twitter: </strong>
+                      <Timeline
+                        dataSource={{
+                          sourceType: "profile",
+                          screenName: item.twitter
+                        }}
+                        options={{
+                          username: item.twitter,
+                          height: "400",
+                          width: "60%"
+                        }}
+                        onLoad={() => console.log("Timeline is loaded!")}
+                      />
+                    </>
+                  ) : null}
+                </MDBCardText>
+                <MDBCardFooter className="px-1">
+                  {item.email ? (
+                    <span className="float-right">
+                      <MDBBtn
+                        size="lg"
+                        tag="a"
+                        floating
+                        social="email"
+                        href={"mailto:" + item.email}
+                      >
+                        <MDBIcon icon="envelope" />
+                      </MDBBtn>
+                    </span>
+                  ) : null}
+                </MDBCardFooter>
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+          {/* </MDBRow> */}
+        </section>
       );
     });
     return (
       <div className="Main">
-      <br></br>
-        <strong><h1 className="text-white">Local Representatives</h1></strong>
-        <hr/>
+        <br />
+        <strong>
+          <h1 className="text-white">Local Representatives</h1>
+        </strong>
+        <hr />
         <>{officeNames}</>
       </div>
     );
