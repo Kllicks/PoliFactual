@@ -1,13 +1,24 @@
 import { Timeline } from "react-twitter-widgets";
 import React, { Component } from "react";
 
-
 // import Styles from '../styles/National.css';
 
+import {
+  MDBIcon,
+  MDBContainer,
+  MDBBtn,
+  MDBRow,
+  MDBCol,
+  MDBCollapse
+} from "mdbreact";
 
-import { MDBIcon, MDBContainer, MDBBtn, MDBRow, MDBCol, MDBCollapse } from "mdbreact";
-
-import { MDBCardImage, MDBCardTitle, MDBCardText, MDBCardFooter,  MDBTooltip } from "mdbreact";
+import {
+  MDBCardImage,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardFooter,
+  MDBTooltip
+} from "mdbreact";
 
 import {
   Button,
@@ -25,9 +36,8 @@ import {
   MDBCardBody,
   MDBAvatar,
   MDBRotatingCard
-  } from "mdbreact";
+} from "mdbreact";
 import { spacing } from "material-ui/styles";
-
 
 class Nationals extends Component {
   constructor(props) {
@@ -43,7 +53,6 @@ class Nationals extends Component {
   //   const cardId = `flipped${id}`;
   //   this.setState({ [cardId]: !this.state[cardId] });
   // }
-  
 
   componentDidMount() {
     let streetaddress = sessionStorage.getItem("streetaddress");
@@ -125,79 +134,98 @@ class Nationals extends Component {
   }
 
   render() {
-    
     let officeNames = this.state.personOfficeInfo.map((item, index) => {
-      
       return (
         <section className="text-center">
-        <MDBRow>
-        <MDBCol lg="3" md="10" className="mb-lg-0 mb-4">
-          <MDBCard ecommerce>
-              {item.photo ? (
-                <MDBCardImage
-                  cascade
-                  top 
-                  style={{width: '18.5rem', height: '18rem' }} src={item.photo} alt="" />
-              ) : null}
-            <MDBCardBody cascade className="text-center">
-              <a href="#!" className="text-muted">
-                <h5>{item.personName ? <><a href={item.url}>{item.personName}</a></> : null}</h5>
-              </a>
-              <MDBCardTitle>
-                <strong>
-                {item.officeName ? <>{item.officeName}</> : null}
-                </strong>
-              </MDBCardTitle>
-              <hr/>
-              <MDBCardText>
-                <strong> Address: </strong>
-              {item.address.line1 ? <>{item.address.line1}</> : null}
-             <br/>
-             {item.address.line2 ? <>{item.address.line2}</> : null}
-          <br/>
-             {item.address.city ? <>{item.address.city}</> : null}
-              <text> , </text>
-             {item.address.state ? <>{item.address.state}</> : null}
-          <text> </text>
-             {item.address.zip ? <>{item.address.zip}</> : null}
-             <br/>
-             <strong>Party: </strong>
-             {item.party ? <>{item.party}</> : null}
-             <br/>
-             <strong>Phone Number: </strong>
-             {item.phoneNumber ? <>{item.phoneNumber}</> : null}
-             <br/>
-             <strong>Twitter: </strong>
-             {item.twitter ? (
-               <>
-                 <Timeline
-                   dataSource={{
-                     sourceType: "profile",
-                     screenName: item.twitter
-                   }}
-                   options={{
-                     username: item.twitter,
-                     height: "400",
-                     width: "60%"
-                   }}
-                   onLoad={() => console.log("Timeline is loaded!")}
-                 />
-               </>
-             ) : null}
-              </MDBCardText>
-              <MDBCardFooter className="px-1">
-                  {item.email ? (
-                    <span className="float-right">
-                    <MDBBtn size="lg" tag="a" floating social="email" href={"mailto:" + item.email}>
-                    <MDBIcon icon="envelope" />
-                  </MDBBtn>
-                  </span>
-                  ) : null}
-              </MDBCardFooter>
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
+          <MDBRow>
+            <MDBCol lg="3" md="10" className="mb-lg-0 mb-4">
+              <MDBCard ecommerce>
+                {item.photo ? (
+                  <MDBCardImage
+                    cascade
+                    top
+                    style={{ width: "18.5rem", height: "18rem" }}
+                    src={item.photo}
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    style={{ width: "13rem", height: "15rem" }}
+                    src={"/images/NoPhotoAvailable.jpg"}
+                    alt=""
+                  />
+                )}
+                <MDBCardBody cascade className="text-center">
+                  <a href="#!" className="text-muted">
+                    <h5>
+                      {item.personName ? (
+                        <>
+                          <a href={item.url}>{item.personName}</a>
+                        </>
+                      ) : null}
+                    </h5>
+                  </a>
+                  <MDBCardTitle>
+                    <strong>
+                      {item.officeName ? <>{item.officeName}</> : null}
+                    </strong>
+                  </MDBCardTitle>
+                  <hr />
+                  <MDBCardText>
+                    <strong> Address: </strong>
+                    {item.address.line1 ? <>{item.address.line1}</> : null}
+                    <br />
+                    {item.address.line2 ? <>{item.address.line2}</> : null}
+                    <br />
+                    {item.address.city ? <>{item.address.city}</> : null}
+                    <text> , </text>
+                    {item.address.state ? <>{item.address.state}</> : null}
+                    <text> </text>
+                    {item.address.zip ? <>{item.address.zip}</> : null}
+                    <br />
+                    <strong>Party: </strong>
+                    {item.party ? <>{item.party}</> : null}
+                    <br />
+                    <strong>Phone Number: </strong>
+                    {item.phoneNumber ? <>{item.phoneNumber}</> : null}
+                    <br />
+                    <strong>Twitter: </strong>
+                    {item.twitter ? (
+                      <>
+                        <Timeline
+                          dataSource={{
+                            sourceType: "profile",
+                            screenName: item.twitter
+                          }}
+                          options={{
+                            username: item.twitter,
+                            height: "400",
+                            width: "60%"
+                          }}
+                          onLoad={() => console.log("Timeline is loaded!")}
+                        />
+                      </>
+                    ) : null}
+                  </MDBCardText>
+                  <MDBCardFooter className="px-1">
+                    {item.email ? (
+                      <span className="float-right">
+                        <MDBBtn
+                          size="lg"
+                          tag="a"
+                          floating
+                          social="email"
+                          href={"mailto:" + item.email}
+                        >
+                          <MDBIcon icon="envelope" />
+                        </MDBBtn>
+                      </span>
+                    ) : null}
+                  </MDBCardFooter>
+                </MDBCardBody>
+              </MDBCard>
+            </MDBCol>
+          </MDBRow>
         </section>
       );
     });
