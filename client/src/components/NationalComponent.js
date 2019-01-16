@@ -175,7 +175,7 @@ class Nationals extends Component {
                   <MDBCardText>
                     <strong> Address: </strong>
                     {item.address.line1 ? <>{item.address.line1}</> : null}
-                    <br/>
+                    <br />
                     {item.address.line2 ? <>{item.address.line2}</> : null}
                     <br />
                     {item.address.city ? <>{item.address.city}</> : null}
@@ -190,9 +190,9 @@ class Nationals extends Component {
                     <strong>Phone Number: </strong>
                     {item.phoneNumber ? <>{item.phoneNumber}</> : null}
                     <br />
-                    <strong>Twitter: </strong>
                     {item.twitter ? (
                       <>
+                        <strong>Twitter: </strong>
                         <Timeline
                           dataSource={{
                             sourceType: "profile",
@@ -233,9 +233,11 @@ class Nationals extends Component {
 
     return (
       <div>
-        <br></br>
-        <strong><h1 className="text-white">National Representatives</h1></strong>
-        <hr/>
+        <br />
+        <strong>
+          <h1 className="text-white">National Representatives</h1>
+        </strong>
+        <hr />
         <>{officeNames}</>
       </div>
     );
