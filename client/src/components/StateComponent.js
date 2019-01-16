@@ -154,7 +154,7 @@ class States extends Component {
               <MDBCardText>
                 <strong> Address: </strong>
               {item.address.line1 ? <>{item.address.line1}</> : null}
-             <br/>
+             
              {item.address.line2 ? <>{item.address.line2}</> : null}
           <br/>
              {item.address.city ? <>{item.address.city}</> : null}
@@ -210,8 +210,9 @@ class States extends Component {
      
       <div className="Main">
         <br></br>
-        <strong><h1>State Represntatives</h1></strong>
-        <p>{officeNames}</p>
+        <strong><h1 className="text-white">State Representatives</h1></strong>
+        <hr/>
+        <>{officeNames}</>
       </div>
       
     );

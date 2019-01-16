@@ -138,10 +138,11 @@ class Nationals extends Component {
       return (
         <section className="text-center">
           <MDBRow>
-            <MDBCol lg="3" md="10" className="mb-lg-0 mb-4">
-              <MDBCard ecommerce>
+            <MDBCol lg="12" md="12" className="mb-lg-0 mb-12">
+              <MDBCard ecommerce align="center">
                 {item.photo ? (
                   <MDBCardImage
+                    className="rounded-circle pt-4"
                     cascade
                     top
                     style={{ width: "18.5rem", height: "18rem" }}
@@ -174,7 +175,7 @@ class Nationals extends Component {
                   <MDBCardText>
                     <strong> Address: </strong>
                     {item.address.line1 ? <>{item.address.line1}</> : null}
-                    <br />
+                    <br/>
                     {item.address.line2 ? <>{item.address.line2}</> : null}
                     <br />
                     {item.address.city ? <>{item.address.city}</> : null}
@@ -233,7 +234,8 @@ class Nationals extends Component {
     return (
       <div>
         <br></br>
-        <strong><h1>National Represntatives</h1></strong>
+        <strong><h1 className="text-white">National Representatives</h1></strong>
+        <hr/>
         <>{officeNames}</>
       </div>
     );
