@@ -46,7 +46,7 @@ class Why extends React.Component {
               <MDBCol xl="10" md="11" size="10">
                 <h5 className="font-weight-bold mb-3">Local</h5>
                 <p className="grey-text">
-                 Local info
+                 On your local page, you will see representatives such as your local Tax Comissioner and Sheriff
                 </p>
               </MDBCol>
             </MDBRow>
@@ -57,7 +57,7 @@ class Why extends React.Component {
               <MDBCol xl="10" md="11" size="10">
                 <h5 className="font-weight-bold mb-3">State</h5>
                 <p className="grey-text">
-                  State info
+                  On the state level, you will see representatives such as your Governor and state senators 
                 </p>
               </MDBCol>
             </MDBRow>
@@ -68,7 +68,7 @@ class Why extends React.Component {
               <MDBCol xl="10" md="11" size="10">
                 <h5 className="font-weight-bold mb-3">National</h5>
                 <p className="grey-text">
-                Polifactual can display your legislative representatives at a national level, such as President, Vice-President and information pertaining to their seats.
+                Polifactual can display your legislative representatives at a national level, such as President, and Vice-President
                 </p>
               </MDBCol>
             </MDBRow>

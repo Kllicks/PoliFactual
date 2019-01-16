@@ -10,7 +10,12 @@ import {
     Switch,
     Redirect
   } from "react-router-dom";
+
   
+import About from "./About"
+import Team from "./Team";
+
+  import {NavLink} from "mdbreact";
 
   class FooterPage extends React.Component {
     render() {
@@ -27,31 +32,31 @@ import {
           <Col md="2">
           <h5 className="title indigo darker-4 ">Help</h5>
             <li className="list-unstyled">
-              <a href="#!">Contact Us</a>
+              <a href="/Team">Contact Us</a>
             </li>
-            <li className="list-unstyled">
+            {/* <li className="list-unstyled">
               <a href="#!">Client Services</a>
-            </li>
-            <li className="list-unstyled">
+            </li> */}
+            {/* <li className="list-unstyled">
               <a href="#!">Site Map</a>
-            </li>
-            <li className="list-unstyled">
+            </li> */}
+            {/* <li className="list-unstyled">
               <a href="#!">Privacy Policy</a>
-            </li>
-            <li className="list-unstyled">
+            </li> */}
+            {/* <li className="list-unstyled">
               <a href="#!">Terms of Use</a>
-            </li>
+            </li> */}
           </Col>
           <Col md="2" className="">
           <h5 className="title indigo darker-4 ">About</h5>
             <li className="list-unstyled">
-              <a href="#!">About Polifactual</a>
+              <a href="/About">About Polifactual</a>
             </li>
-            <li className="list-unstyled">
+            {/* <li className="list-unstyled">
               <a href="#!">Careers</a>
-            </li>
+            </li> */}
             <li className="list-unstyled">
-              <a href="#!">Meet the Team</a>
+              <a href="/Team">Meet the Team</a>
             </li>
           </Col>
           <Col md="2" className="">
@@ -68,7 +73,7 @@ import {
         <div className="footer-copyright text-center py-3">
           <Container fluid>
             <h5>&copy; {new Date().getFullYear()} Copyright:{" "}
-            Helen, Kyle, Brien, Isaac Fonseca . All Rights Reserved</h5>
+            Helen Harris, Kyle Sekellick, Brien Mizell, Isaac Fonseca . All Rights Reserved</h5>
           </Container>
         </div>
     </Footer>
