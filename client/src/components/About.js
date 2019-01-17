@@ -8,6 +8,8 @@ import {
     Redirect
   } from 'react-router-dom';
 
+  import screenshotRegis from "../styles/images/screenshotRegister.png";
+
 import {
   MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBMask, MDBRow,
   MDBCol, MDBIcon,
@@ -72,7 +74,7 @@ class About extends React.Component {
           <MDBCol md="4" className="text-name">
             <img
               className="img-fluid"
-              src="https://mdbootstrap.com/img/Mockups/Transparent/Small/iphone-portfolio1.png"
+              src= {screenshotRegis}
               alt=""
             />
           </MDBCol>
