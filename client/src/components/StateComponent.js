@@ -105,7 +105,6 @@ class States extends Component {
         console.log("Looks like there was a problem: \n", error);
       });
   }
-
   render() {
     let officeNames = this.state.personOfficeInfo.map(function(item, index) {
       return (
