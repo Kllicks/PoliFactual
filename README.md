@@ -4,8 +4,6 @@ Polifactual is a web application that informs users on their local, state, and n
 
 By taking a users address and zipcode, our application can pull in information from the Google Civic Information API to display local, state, and national reps information for the user. National(of course) will be the same for every user.
 
-
-
 ## Built With
 
 * [React](https://reactjs.org/docs/getting-started.html) -JavaScript library used to create an interactive UI
@@ -27,8 +25,6 @@ By taking a users address and zipcode, our application can pull in information f
 * Kyle Sekellick
 * Brein Mizell
 
-
-
 ## License
 
 Copyright 2018 Helen Harris, Isaac Fonseca, Kyle Sekellick, and Brien Mizell
@@ -43,14 +39,14 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 ## Future Edits
 
 Adjust footer links/content
-- Currently several links in the footer do not redirect to another page. Due to time constraints we have decided to adjst the links after demo day
+- Currently several links in the footer do not redirect to another page. Due to time constraints we have decided to adjust the links after demo day
 
 Comment portions of code that need more clarification and clean up files
- - Several componenets found in the code are class components, when in fact they could be fucntional components.
- - Several imports in files are not used
- - Replacing .then code snippets to Async and Await
+ - Several componenets found in the code are class components, when in fact they should be functional components.
+ - Several imports in files are not used. Review if they will be used in the future ideas. If not, we will remove them. 
+ - Replacing .then with Async and Await
 
 ## Acknowledgments
 
 * Chris, Aylin, and Ian for the help debugging!
-* Bootstrap is a headache at times
+
