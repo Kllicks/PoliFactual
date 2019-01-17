@@ -37,16 +37,16 @@ class Home extends React.Component {
                     {/* <MDBBtn color="indigo darken-4">Register Now!</MDBBtn> */}
                   </div>
                   <MDBCol md="6" xl="5" className="mt-xl-5">
-                    <div className="black-text text-center text-md-left">
-                    <h1 className="h1-responsive font-weight-bold mt-sm-5;">
+                    <div className="text-center text-md-left">
+                    <h1 className="red-text h1-responsive font-weight-bold mt-sm-5;">
                       Polifactual{" "}
                     </h1>
                     <hr className="hr-light" />
-                    <h6 className="mb-4 ">
+                    <h6 className="mb-4 font-weight-bold blue-text">
                       Bringing you your local, state, and national legislative representatives' information right to you from one source.
                     </h6>
                     {/* <MDBBtn color="indigo darken-4">Register Now!</MDBBtn> */}
-                    <MDBBtn outline color="black">
+                    <MDBBtn outline color="white">
                       <strong>
                         <NavLink to="/About">Learn More</NavLink>
                       </strong>
