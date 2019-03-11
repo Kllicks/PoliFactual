@@ -10,7 +10,7 @@ By taking a users address and zipcode, our application can pull in information f
 * [Bootstrap](https://getbootstrap.com/) -HTML, CSS, and JavaScript front-end component library used to create our front-end
 * [Node.js](https://nodejs.org/en/about/) -JavaScript framework used for our back-end
 * [Express.js](https://expressjs.com/) - Framework used in conjunction with Node.js to speak to our API/PostgreSQL database
-* [PostrgreSQL](https://www.postgresql.org/) - Realational database used to store our user information
+* [PostgreSQL](https://www.postgresql.org/) - Realational database used to store our user information
 * [AWS](https://aws.amazon.com/) -Amazon web services used to deploy application
 
 ## Images
